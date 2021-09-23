@@ -13,3 +13,5 @@ WHILE argumento > 1
         ASSIGN argumento - 1 TO argumento
     END
 PRINT fatorial
+
+TESTE
