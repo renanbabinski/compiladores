@@ -7,7 +7,7 @@ fatorial:INT
 READ argumento
 ASSIGN argumento TO fatorial
 IF argumento = 0 THEN ASSIGN 1 TO fatorial
-WHILE argumento > 1
+WHILE argumento <1000
     BEGIN
         ASSIGN fatorial * (argumento - 1) TO fatorial
         ASSIGN argumento - 1 TO argumento

@@ -1,17 +1,26 @@
 class ReadTextFile:
+    BUFFER = 5
     def __init__(self, arquivo):
+        self.buffer = [None]*__class__.BUFFER
+        self.pointer = __class__.BUFFER-1
         try:
-            self.f = open(arquivo, 'r')
+            self.f = open(arquivo, 'r', encoding='utf-8')
         except FileNotFoundError:
             print("file {} does not exist".format(arquivo))
+            exit()
         
     def readNextCharacter(self):
-        #with self.f:
+        #print(self.buffer)
         character = self.f.read(1)
-        #print(type(character))
         if not character:
-            #print("End of file")
             return -1
-        print(character, end='')
-        return character
-        
+        self.buffer.append(character)
+        del(self.buffer[0])
+        c = self.buffer[self.pointer]
+        if self.pointer != __class__.BUFFER-1:
+            self.pointer += 1
+        print(c, end='')
+        return c
+
+    def go_back_buffer(self):
+        self.pointer -= 1

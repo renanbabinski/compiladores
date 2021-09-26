@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Token(Enum):
+class TipoToken(Enum):
     # Key Words (Palavras Chave)
     KwStatements = 0
     KwAlgorithm = 1
