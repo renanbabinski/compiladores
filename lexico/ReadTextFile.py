@@ -1,5 +1,5 @@
 class ReadTextFile:
-    BUFFER = 5
+    BUFFER = 20
     def __init__(self, arquivo):
         self.buffer = [None]*__class__.BUFFER
         self.pointer = __class__.BUFFER-1
@@ -10,16 +10,18 @@ class ReadTextFile:
             exit()
         
     def readNextCharacter(self):
-        #print(self.buffer)
-        character = self.f.read(1)
-        if not character:
-            return -1
-        self.buffer.append(character)
-        del(self.buffer[0])
-        c = self.buffer[self.pointer]
-        if self.pointer != __class__.BUFFER-1:
+        if self.pointer == __class__.BUFFER-1:
+            character = self.f.read(1)
+            if not character:
+                return -1
+            self.buffer.append(character)
+            del(self.buffer[0])
+            c = self.buffer[self.pointer]
+        else:
             self.pointer += 1
+            c = self.buffer[self.pointer]
         print(c, end='')
+        #print(self.buffer)
         return c
 
     def go_back_buffer(self):

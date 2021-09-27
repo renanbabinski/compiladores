@@ -7,7 +7,7 @@ class Lexico:
         self.ldat = ReadTextFile(arquivo)
 
     def next_token(self):
-        c = " "
+        c = "@"
 
         while(c != -1):
             c = self.ldat.readNextCharacter()
