@@ -1,0 +1,32 @@
+:STATEMENTS
+numero1:INT
+numero2:INT
+numero3:INT
+aux:INT
+
+:ALGORITHM
+% Coloca 3 números em ordem crescente
+READ numero1
+READ numero2
+READ numero3
+IF numero1 > numero2 THEN
+   BEGIN
+      ASSIGN 2+3-4+5-6*5-1 TO aux
+      ASSIGN numero1 TO numero2
+      ASSIGN aux TO numero1
+   END 
+IF numero1 > numero3 AND numero2 <= numero4 AND numero1 > 3 AND numero2 <> numero4 THEN
+   BEGIN
+      ASSIGN (numero3) TO aux
+      ASSIGN numero1 TO numero3
+      ASSIGN aux TO numero1
+   END
+IF numero2 > numero3 THEN
+   BEGIN
+      ASSIGN numero3 TO aux
+      ASSIGN numero2 TO numero3
+      ASSIGN aux TO numero2
+   END
+PRINT numero1
+PRINT numero2
+PRINT numero3

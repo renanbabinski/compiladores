@@ -1,0 +1,39 @@
+Program' -> Program
+Program -> : STATEMENTS StatementList : ALGORITHM CommandList
+StatementList -> Statement StatementList
+StatementList -> Statement
+Statement -> VARIABLE : VarType
+VarType -> INTEGER
+VarType -> REAL
+ArithmeticExpression -> ArithmeticExpression + ArithmeticTerm
+ArithmeticExpression -> ArithmeticExpression - ArithmeticTerm
+ArithmeticExpression -> ArithmeticTerm
+ArithmeticTerm -> ArithmeticTerm * ArithmeticFactor
+ArithmeticTerm -> ArithmeticTerm / ArithmeticFactor
+ArithmeticTerm -> ArithmeticFactor
+ArithmeticFactor -> NUMINT
+ArithmeticFactor -> NUMREAL
+ArithmeticFactor -> VARIABLE
+ArithmeticFactor -> ( ArithmeticExpression )
+RelationalExpression -> RelationalExpression BooleanOperator RelationalTerm
+RelationalExpression -> RelationalTerm
+RelationalTerm -> ArithmeticExpression OP_REL ArithmeticExpression
+RelationalTerm -> ( RelationalExpression )
+BooleanOperator -> AND
+BooleanOperator -> OR
+CommandList -> Commannd CommandList
+CommandList -> Command
+Command -> AssignCmd
+Command -> InCmd
+Command -> OutCmd
+Command -> ConditionCmd
+Command -> RepeatCmd
+Command -> SubAlgorithm
+AssignCmd -> ASSIGN ArithmeticExpression TO VARIABLE
+InCmd -> READ VARIABLE
+OutCmd -> PRINT VARIABLE
+OutCmd -> PRINT STRING
+ConditionCmd -> IF RelationalExpression THEN Command
+ConditionCmd -> IF RelationalExpression THEN Command ELSE Command
+RepeatCmd -> WHILE RelationalExpression Command
+SubAlgorithm -> BEGIN CommandList END
