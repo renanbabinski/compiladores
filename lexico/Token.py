@@ -9,5 +9,6 @@ class Token:
         self.lexema = lexema
 
     def __str__(self):
-        return "<"+str(self.nome)+","+str(self.lexema)+">"
+
+        return "--------------------------\n<"+str(self.nome)+","+str(self.lexema)+">\n--------------------------\n"
     

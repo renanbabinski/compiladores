@@ -1,3 +1,4 @@
+from TipoToken import TipoToken
 from Lexico import Lexico
 
 
@@ -7,7 +8,7 @@ t = True
 
 while True:
     t = lex.next_token()
-    if t == None:
+    if t.nome == TipoToken.End:
         break
     print(t, end='')
 

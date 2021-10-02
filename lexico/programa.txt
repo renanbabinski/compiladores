@@ -7,9 +7,9 @@ fatorial:INT
 READ argumento
 ASSIGN argumento TO fatorial
 IF argumento = 0 THEN ASSIGN 1 TO fatorial
-WHILE argumento <>123
+WHILE argumento <> 123
     BEGIN
         ASSIGN fatorial * (argumento - 1) TO fatorial
         ASSIGN argumento - 1 TO argumento
     END
-PRINT fatorial
+PRINT fatorial 

@@ -3,7 +3,7 @@ class ReadTextFile:
     def __init__(self, arquivo):
         self.buffer = [None]*__class__.BUFFER
         self.pointer = __class__.BUFFER-1
-        self.lexeme_init = 0
+        self.lexeme_init = __class__.BUFFER-1
         self.lexeme = ""
         try:
             self.f = open(arquivo, 'r', encoding='utf-8')
@@ -19,13 +19,14 @@ class ReadTextFile:
             self.buffer.append(character)
             del(self.buffer[0])
             c = self.buffer[self.pointer]
+            self.lexeme_init -= 1
         else:
             self.pointer += 1
             c = self.buffer[self.pointer]
-        print(c, end='')
+        #print(c, end='')
         self.lexeme += c
-        print(self.lexeme)
-        #print(self.buffer)
+        #print(self.lexeme)
+        #self.print_buffer()
         return c
 
     def go_back_buffer(self):
@@ -33,12 +34,33 @@ class ReadTextFile:
         self.lexeme = self.lexeme[0:-1]
 
     def reset(self):
-        self.pointer = self.lexeme_init
+        # testar
+        self.pointer = self.lexeme_init-1
         self.lexeme = ""
 
     def confirm(self):
-        self.lexeme_init = self.pointer
+        self.lexeme_init = __class__.BUFFER-1
         self.lexeme = ""
 
     def get_lexema(self):
         return self.lexeme
+
+    def print_buffer(self):
+        for i in self.buffer:
+            if i == None:
+                print('#', end='')
+                continue
+            if i == '\n':
+                print("@", end='')
+                continue
+            if i == ' ':
+                print('_', end='')
+                continue
+            print(str(i), end='')
+        print()
+        for i in range(self.pointer):
+            if i == self.lexeme_init:
+                print('$', end='')
+            else:
+                print(' ', end='')
+        print('^')
