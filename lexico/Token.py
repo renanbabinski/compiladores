@@ -12,3 +12,5 @@ class Token:
 
         return "--------------------------\n<"+str(self.nome)+","+str(self.lexema)+">\n--------------------------\n"
     
+    def get_token(self):
+        return self.nome, self.lexema

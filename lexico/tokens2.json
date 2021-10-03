@@ -1,0 +1,448 @@
+{
+    "TOKENS": [
+        {
+            "nome": "Delim",
+            "lexema": ":"
+        },
+        {
+            "nome": "KwStatements",
+            "lexema": "STATEMENTS"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero1"
+        },
+        {
+            "nome": "Delim",
+            "lexema": ":"
+        },
+        {
+            "nome": "KwInteger",
+            "lexema": "INT"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero2"
+        },
+        {
+            "nome": "Delim",
+            "lexema": ":"
+        },
+        {
+            "nome": "KwInteger",
+            "lexema": "INT"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero3"
+        },
+        {
+            "nome": "Delim",
+            "lexema": ":"
+        },
+        {
+            "nome": "KwInteger",
+            "lexema": "INT"
+        },
+        {
+            "nome": "Var",
+            "lexema": "aux"
+        },
+        {
+            "nome": "Delim",
+            "lexema": ":"
+        },
+        {
+            "nome": "KwInteger",
+            "lexema": "INT"
+        },
+        {
+            "nome": "Delim",
+            "lexema": ":"
+        },
+        {
+            "nome": "KwAlgorithm",
+            "lexema": "ALGORITHM"
+        },
+        {
+            "nome": "KwRead",
+            "lexema": "READ"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero1"
+        },
+        {
+            "nome": "KwRead",
+            "lexema": "READ"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero2"
+        },
+        {
+            "nome": "KwRead",
+            "lexema": "READ"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero3"
+        },
+        {
+            "nome": "KwIf",
+            "lexema": "IF"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero1"
+        },
+        {
+            "nome": "OpRelBigger",
+            "lexema": ">"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero2"
+        },
+        {
+            "nome": "KwThen",
+            "lexema": "THEN"
+        },
+        {
+            "nome": "KwBegin",
+            "lexema": "BEGIN"
+        },
+        {
+            "nome": "KwAssign",
+            "lexema": "ASSIGN"
+        },
+        {
+            "nome": "NumInt",
+            "lexema": "2"
+        },
+        {
+            "nome": "OpAritSum",
+            "lexema": "+"
+        },
+        {
+            "nome": "NumInt",
+            "lexema": "3"
+        },
+        {
+            "nome": "OpAritSub",
+            "lexema": "-"
+        },
+        {
+            "nome": "NumInt",
+            "lexema": "4"
+        },
+        {
+            "nome": "OpAritSum",
+            "lexema": "+"
+        },
+        {
+            "nome": "NumInt",
+            "lexema": "5"
+        },
+        {
+            "nome": "OpAritSub",
+            "lexema": "-"
+        },
+        {
+            "nome": "NumInt",
+            "lexema": "6"
+        },
+        {
+            "nome": "OpAritMult",
+            "lexema": "*"
+        },
+        {
+            "nome": "NumInt",
+            "lexema": "5"
+        },
+        {
+            "nome": "OpAritSub",
+            "lexema": "-"
+        },
+        {
+            "nome": "NumInt",
+            "lexema": "1"
+        },
+        {
+            "nome": "KwTo",
+            "lexema": "TO"
+        },
+        {
+            "nome": "Var",
+            "lexema": "aux"
+        },
+        {
+            "nome": "KwAssign",
+            "lexema": "ASSIGN"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero1"
+        },
+        {
+            "nome": "KwTo",
+            "lexema": "TO"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero2"
+        },
+        {
+            "nome": "KwAssign",
+            "lexema": "ASSIGN"
+        },
+        {
+            "nome": "Var",
+            "lexema": "aux"
+        },
+        {
+            "nome": "KwTo",
+            "lexema": "TO"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero1"
+        },
+        {
+            "nome": "KwEnd",
+            "lexema": "END"
+        },
+        {
+            "nome": "KwIf",
+            "lexema": "IF"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero1"
+        },
+        {
+            "nome": "OpRelBigger",
+            "lexema": ">"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero3"
+        },
+        {
+            "nome": "OpBoolAnd",
+            "lexema": "AND"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero2"
+        },
+        {
+            "nome": "OpRelSmallerEqual",
+            "lexema": "<="
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero4"
+        },
+        {
+            "nome": "OpBoolAnd",
+            "lexema": "AND"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero1"
+        },
+        {
+            "nome": "OpRelBigger",
+            "lexema": ">"
+        },
+        {
+            "nome": "NumInt",
+            "lexema": "3"
+        },
+        {
+            "nome": "OpBoolAnd",
+            "lexema": "AND"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero2"
+        },
+        {
+            "nome": "OpRelDiff",
+            "lexema": "<>"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero4"
+        },
+        {
+            "nome": "KwThen",
+            "lexema": "THEN"
+        },
+        {
+            "nome": "KwBegin",
+            "lexema": "BEGIN"
+        },
+        {
+            "nome": "KwAssign",
+            "lexema": "ASSIGN"
+        },
+        {
+            "nome": "OpenPar",
+            "lexema": "("
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero3"
+        },
+        {
+            "nome": "ClosePar",
+            "lexema": ")"
+        },
+        {
+            "nome": "KwTo",
+            "lexema": "TO"
+        },
+        {
+            "nome": "Var",
+            "lexema": "aux"
+        },
+        {
+            "nome": "KwAssign",
+            "lexema": "ASSIGN"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero1"
+        },
+        {
+            "nome": "KwTo",
+            "lexema": "TO"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero3"
+        },
+        {
+            "nome": "KwAssign",
+            "lexema": "ASSIGN"
+        },
+        {
+            "nome": "Var",
+            "lexema": "aux"
+        },
+        {
+            "nome": "KwTo",
+            "lexema": "TO"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero1"
+        },
+        {
+            "nome": "KwEnd",
+            "lexema": "END"
+        },
+        {
+            "nome": "KwIf",
+            "lexema": "IF"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero2"
+        },
+        {
+            "nome": "OpRelBigger",
+            "lexema": ">"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero3"
+        },
+        {
+            "nome": "KwThen",
+            "lexema": "THEN"
+        },
+        {
+            "nome": "KwBegin",
+            "lexema": "BEGIN"
+        },
+        {
+            "nome": "KwAssign",
+            "lexema": "ASSIGN"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero3"
+        },
+        {
+            "nome": "KwTo",
+            "lexema": "TO"
+        },
+        {
+            "nome": "Var",
+            "lexema": "aux"
+        },
+        {
+            "nome": "KwAssign",
+            "lexema": "ASSIGN"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero2"
+        },
+        {
+            "nome": "KwTo",
+            "lexema": "TO"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero3"
+        },
+        {
+            "nome": "KwAssign",
+            "lexema": "ASSIGN"
+        },
+        {
+            "nome": "Var",
+            "lexema": "aux"
+        },
+        {
+            "nome": "KwTo",
+            "lexema": "TO"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero2"
+        },
+        {
+            "nome": "KwEnd",
+            "lexema": "END"
+        },
+        {
+            "nome": "KwPrint",
+            "lexema": "PRINT"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero1"
+        },
+        {
+            "nome": "KwPrint",
+            "lexema": "PRINT"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero2"
+        },
+        {
+            "nome": "KwPrint",
+            "lexema": "PRINT"
+        },
+        {
+            "nome": "Var",
+            "lexema": "numero3"
+        }
+    ]
+}

@@ -124,6 +124,8 @@ class Lexico:
         state = 1
         while True:
             c = self.ldat.readNextCharacter()
+            if c == -1:
+                return Token(TipoToken.End, 'Fim')
             if state == 1:
                 if c.isspace() or c == ' ':
                     state = 2
@@ -199,7 +201,10 @@ class Lexico:
             print("{} - TRY SPACES AND COMMENTS PATTERN:".format(try_number))
             self.ldat.print_buffer()
 
-        self.spaces_and_comments()
+        next = self.spaces_and_comments()
+        if next != None:
+            if next.nome == TipoToken.End:
+                return Token(TipoToken.End, 'Fim')
         self.ldat.confirm()
 
         try_number += 1
