@@ -1,0 +1,199 @@
+{
+    "GRAMMAR": [
+        {
+            "prod_number": 0,
+            "head": "Program'",
+            "body": "Program"
+        },
+        {
+            "prod_number": 1,
+            "head": "Program",
+            "body": ": STATEMENTS StatementList : ALGORITHM CommandList"
+        },
+        {
+            "prod_number": 2,
+            "head": "StatementList",
+            "body": "Statement StatementList"
+        },
+        {
+            "prod_number": 3,
+            "head": "StatementList",
+            "body": "Statement"
+        },
+        {
+            "prod_number": 4,
+            "head": "Statement",
+            "body": "VARIABLE : VarType"
+        },
+        {
+            "prod_number": 5,
+            "head": "VarType",
+            "body": "INTEGER"
+        },
+        {
+            "prod_number": 6,
+            "head": "VarType",
+            "body": "REAL"
+        },
+        {
+            "prod_number": 7,
+            "head": "ArithmeticExpression",
+            "body": "ArithmeticExpression + ArithmeticTerm"
+        },
+        {
+            "prod_number": 8,
+            "head": "ArithmeticExpression",
+            "body": "ArithmeticExpression - ArithmeticTerm"
+        },
+        {
+            "prod_number": 9,
+            "head": "ArithmeticExpression",
+            "body": "ArithmeticTerm"
+        },
+        {
+            "prod_number": 10,
+            "head": "ArithmeticTerm",
+            "body": "ArithmeticTerm * ArithmeticFactor"
+        },
+        {
+            "prod_number": 11,
+            "head": "ArithmeticTerm",
+            "body": "ArithmeticTerm / ArithmeticFactor"
+        },
+        {
+            "prod_number": 12,
+            "head": "ArithmeticTerm",
+            "body": "ArithmeticFactor"
+        },
+        {
+            "prod_number": 13,
+            "head": "ArithmeticFactor",
+            "body": "NUMINT"
+        },
+        {
+            "prod_number": 14,
+            "head": "ArithmeticFactor",
+            "body": "NUMREAL"
+        },
+        {
+            "prod_number": 15,
+            "head": "ArithmeticFactor",
+            "body": "VARIABLE"
+        },
+        {
+            "prod_number": 16,
+            "head": "ArithmeticFactor",
+            "body": "( ArithmeticExpression )"
+        },
+        {
+            "prod_number": 17,
+            "head": "RelationalExpression",
+            "body": "RelationalExpression BooleanOperator RelationalTerm"
+        },
+        {
+            "prod_number": 18,
+            "head": "RelationalExpression",
+            "body": "RelationalTerm"
+        },
+        {
+            "prod_number": 19,
+            "head": "RelationalTerm",
+            "body": "ArithmeticExpression OP_REL ArithmeticExpression"
+        },
+        {
+            "prod_number": 20,
+            "head": "RelationalTerm",
+            "body": "( RelationalExpression )"
+        },
+        {
+            "prod_number": 21,
+            "head": "BooleanOperator",
+            "body": "AND"
+        },
+        {
+            "prod_number": 22,
+            "head": "BooleanOperator",
+            "body": "OR"
+        },
+        {
+            "prod_number": 23,
+            "head": "CommandList",
+            "body": "Command CommandList"
+        },
+        {
+            "prod_number": 24,
+            "head": "CommandList",
+            "body": "Command"
+        },
+        {
+            "prod_number": 25,
+            "head": "Command",
+            "body": "AssignCmd"
+        },
+        {
+            "prod_number": 26,
+            "head": "Command",
+            "body": "InCmd"
+        },
+        {
+            "prod_number": 27,
+            "head": "Command",
+            "body": "OutCmd"
+        },
+        {
+            "prod_number": 28,
+            "head": "Command",
+            "body": "ConditionCmd"
+        },
+        {
+            "prod_number": 29,
+            "head": "Command",
+            "body": "RepeatCmd"
+        },
+        {
+            "prod_number": 30,
+            "head": "Command",
+            "body": "SubAlgorithm"
+        },
+        {
+            "prod_number": 31,
+            "head": "AssignCmd",
+            "body": "ASSIGN ArithmeticExpression TO VARIABLE"
+        },
+        {
+            "prod_number": 32,
+            "head": "InCmd",
+            "body": "READ VARIABLE"
+        },
+        {
+            "prod_number": 33,
+            "head": "OutCmd",
+            "body": "PRINT VARIABLE"
+        },
+        {
+            "prod_number": 34,
+            "head": "OutCmd",
+            "body": "PRINT STRING"
+        },
+        {
+            "prod_number": 35,
+            "head": "ConditionCmd",
+            "body": "IF RelationalExpression THEN Command"
+        },
+        {
+            "prod_number": 36,
+            "head": "ConditionCmd",
+            "body": "IF RelationalExpression THEN Command ELSE Command"
+        },
+        {
+            "prod_number": 37,
+            "head": "RepeatCmd",
+            "body": "WHILE RelationalExpression Command"
+        },
+        {
+            "prod_number": 38,
+            "head": "SubAlgorithm",
+            "body": "BEGIN CommandList END"
+        }
+    ]
+}

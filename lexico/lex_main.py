@@ -2,7 +2,7 @@ from TipoToken import TipoToken
 from Lexico import Lexico
 
 
-lex = Lexico(r'C:\Users\Renan\Documents\GitHub\compiladores\lexico\programa.txt')
+lex = Lexico(r'C:\Users\Renan\Documents\GitHub\compiladores\lexico\programa2.txt')
 t = True
 
 

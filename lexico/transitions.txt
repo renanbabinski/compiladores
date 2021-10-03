@@ -1,0 +1,215 @@
+SLR closure table
+Goto	Kernel	State	Closure
+{Program' -> .Program}	0	{Program' -> .Program; Program -> .: STATEMENTS StatementList : ALGORITHM CommandList}
+goto(0, Program)	{Program' -> Program.}	1	{Program' -> Program.}
+goto(0, :)	{Program -> :.STATEMENTS StatementList : ALGORITHM CommandList}	2	{Program -> :.STATEMENTS StatementList : ALGORITHM CommandList}
+goto(2, STATEMENTS)	{Program -> : STATEMENTS.StatementList : ALGORITHM CommandList}	3	{Program -> : STATEMENTS.StatementList : ALGORITHM CommandList; StatementList -> .Statement StatementList; StatementList -> .Statement; Statement -> .VARIABLE : VarType}
+goto(3, StatementList)	{Program -> : STATEMENTS StatementList.: ALGORITHM CommandList}	4	{Program -> : STATEMENTS StatementList.: ALGORITHM CommandList}
+goto(3, Statement)	{StatementList -> Statement.StatementList; StatementList -> Statement.}	5	{StatementList -> Statement.StatementList; StatementList -> Statement.; StatementList -> .Statement StatementList; StatementList -> .Statement; Statement -> .VARIABLE : VarType}
+goto(3, VARIABLE)	{Statement -> VARIABLE.: VarType}	6	{Statement -> VARIABLE.: VarType}
+goto(4, :)	{Program -> : STATEMENTS StatementList :.ALGORITHM CommandList}	7	{Program -> : STATEMENTS StatementList :.ALGORITHM CommandList}
+goto(5, StatementList)	{StatementList -> Statement StatementList.}	8	{StatementList -> Statement StatementList.}
+goto(5, Statement)	{StatementList -> Statement.StatementList; StatementList -> Statement.}	5	 
+goto(5, VARIABLE)	{Statement -> VARIABLE.: VarType}	6	 
+goto(6, :)	{Statement -> VARIABLE :.VarType}	9	{Statement -> VARIABLE :.VarType; VarType -> .INTEGER; VarType -> .REAL}
+goto(7, ALGORITHM)	{Program -> : STATEMENTS StatementList : ALGORITHM.CommandList}	10	{Program -> : STATEMENTS StatementList : ALGORITHM.CommandList; CommandList -> .Command CommandList; CommandList -> .Command; Command -> .AssignCmd; Command -> .InCmd; Command -> .OutCmd; Command -> .ConditionCmd; Command -> .RepeatCmd; Command -> .SubAlgorithm; AssignCmd -> .ASSIGN ArithmeticExpression TO VARIABLE; InCmd -> .READ VARIABLE; OutCmd -> .PRINT VARIABLE; OutCmd -> .PRINT STRING; ConditionCmd -> .IF RelationalExpression THEN Command; ConditionCmd -> .IF RelationalExpression THEN Command ELSE Command; RepeatCmd -> .WHILE RelationalExpression Command; SubAlgorithm -> .BEGIN CommandList END}
+goto(9, VarType)	{Statement -> VARIABLE : VarType.}	11	{Statement -> VARIABLE : VarType.}
+goto(9, INTEGER)	{VarType -> INTEGER.}	12	{VarType -> INTEGER.}
+goto(9, REAL)	{VarType -> REAL.}	13	{VarType -> REAL.}
+goto(10, CommandList)	{Program -> : STATEMENTS StatementList : ALGORITHM CommandList.}	14	{Program -> : STATEMENTS StatementList : ALGORITHM CommandList.}
+goto(10, Command)	{CommandList -> Command.CommandList; CommandList -> Command.}	15	{CommandList -> Command.CommandList; CommandList -> Command.; CommandList -> .Command CommandList; CommandList -> .Command; Command -> .AssignCmd; Command -> .InCmd; Command -> .OutCmd; Command -> .ConditionCmd; Command -> .RepeatCmd; Command -> .SubAlgorithm; AssignCmd -> .ASSIGN ArithmeticExpression TO VARIABLE; InCmd -> .READ VARIABLE; OutCmd -> .PRINT VARIABLE; OutCmd -> .PRINT STRING; ConditionCmd -> .IF RelationalExpression THEN Command; ConditionCmd -> .IF RelationalExpression THEN Command ELSE Command; RepeatCmd -> .WHILE RelationalExpression Command; SubAlgorithm -> .BEGIN CommandList END}
+goto(10, AssignCmd)	{Command -> AssignCmd.}	16	{Command -> AssignCmd.}
+goto(10, InCmd)	{Command -> InCmd.}	17	{Command -> InCmd.}
+goto(10, OutCmd)	{Command -> OutCmd.}	18	{Command -> OutCmd.}
+goto(10, ConditionCmd)	{Command -> ConditionCmd.}	19	{Command -> ConditionCmd.}
+goto(10, RepeatCmd)	{Command -> RepeatCmd.}	20	{Command -> RepeatCmd.}
+goto(10, SubAlgorithm)	{Command -> SubAlgorithm.}	21	{Command -> SubAlgorithm.}
+goto(10, ASSIGN)	{AssignCmd -> ASSIGN.ArithmeticExpression TO VARIABLE}	22	{AssignCmd -> ASSIGN.ArithmeticExpression TO VARIABLE; ArithmeticExpression -> .ArithmeticExpression + ArithmeticTerm; ArithmeticExpression -> .ArithmeticExpression - ArithmeticTerm; ArithmeticExpression -> .ArithmeticTerm; ArithmeticTerm -> .ArithmeticTerm * ArithmeticFactor; ArithmeticTerm -> .ArithmeticTerm / ArithmeticFactor; ArithmeticTerm -> .ArithmeticFactor; ArithmeticFactor -> .NUMINT; ArithmeticFactor -> .NUMREAL; ArithmeticFactor -> .VARIABLE; ArithmeticFactor -> .( ArithmeticExpression )}
+goto(10, READ)	{InCmd -> READ.VARIABLE}	23	{InCmd -> READ.VARIABLE}
+goto(10, PRINT)	{OutCmd -> PRINT.VARIABLE; OutCmd -> PRINT.STRING}	24	{OutCmd -> PRINT.VARIABLE; OutCmd -> PRINT.STRING}
+goto(10, IF)	{ConditionCmd -> IF.RelationalExpression THEN Command; ConditionCmd -> IF.RelationalExpression THEN Command ELSE Command}	25	{ConditionCmd -> IF.RelationalExpression THEN Command; ConditionCmd -> IF.RelationalExpression THEN Command ELSE Command; RelationalExpression -> .RelationalExpression BooleanOperator RelationalTerm; RelationalExpression -> .RelationalTerm; RelationalTerm -> .ArithmeticExpression OP_REL ArithmeticExpression; RelationalTerm -> .( RelationalExpression ); ArithmeticExpression -> .ArithmeticExpression + ArithmeticTerm; ArithmeticExpression -> .ArithmeticExpression - ArithmeticTerm; ArithmeticExpression -> .ArithmeticTerm; ArithmeticTerm -> .ArithmeticTerm * ArithmeticFactor; ArithmeticTerm -> .ArithmeticTerm / ArithmeticFactor; ArithmeticTerm -> .ArithmeticFactor; ArithmeticFactor -> .NUMINT; ArithmeticFactor -> .NUMREAL; ArithmeticFactor -> .VARIABLE; ArithmeticFactor -> .( ArithmeticExpression )}
+goto(10, WHILE)	{RepeatCmd -> WHILE.RelationalExpression Command}	26	{RepeatCmd -> WHILE.RelationalExpression Command; RelationalExpression -> .RelationalExpression BooleanOperator RelationalTerm; RelationalExpression -> .RelationalTerm; RelationalTerm -> .ArithmeticExpression OP_REL ArithmeticExpression; RelationalTerm -> .( RelationalExpression ); ArithmeticExpression -> .ArithmeticExpression + ArithmeticTerm; ArithmeticExpression -> .ArithmeticExpression - ArithmeticTerm; ArithmeticExpression -> .ArithmeticTerm; ArithmeticTerm -> .ArithmeticTerm * ArithmeticFactor; ArithmeticTerm -> .ArithmeticTerm / ArithmeticFactor; ArithmeticTerm -> .ArithmeticFactor; ArithmeticFactor -> .NUMINT; ArithmeticFactor -> .NUMREAL; ArithmeticFactor -> .VARIABLE; ArithmeticFactor -> .( ArithmeticExpression )}
+goto(10, BEGIN)	{SubAlgorithm -> BEGIN.CommandList END}	27	{SubAlgorithm -> BEGIN.CommandList END; CommandList -> .Command CommandList; CommandList -> .Command; Command -> .AssignCmd; Command -> .InCmd; Command -> .OutCmd; Command -> .ConditionCmd; Command -> .RepeatCmd; Command -> .SubAlgorithm; AssignCmd -> .ASSIGN ArithmeticExpression TO VARIABLE; InCmd -> .READ VARIABLE; OutCmd -> .PRINT VARIABLE; OutCmd -> .PRINT STRING; ConditionCmd -> .IF RelationalExpression THEN Command; ConditionCmd -> .IF RelationalExpression THEN Command ELSE Command; RepeatCmd -> .WHILE RelationalExpression Command; SubAlgorithm -> .BEGIN CommandList END}
+goto(15, CommandList)	{CommandList -> Command CommandList.}	28	{CommandList -> Command CommandList.}
+goto(15, Command)	{CommandList -> Command.CommandList; CommandList -> Command.}	15	 
+goto(15, AssignCmd)	{Command -> AssignCmd.}	16	 
+goto(15, InCmd)	{Command -> InCmd.}	17	 
+goto(15, OutCmd)	{Command -> OutCmd.}	18	 
+goto(15, ConditionCmd)	{Command -> ConditionCmd.}	19	 
+goto(15, RepeatCmd)	{Command -> RepeatCmd.}	20	 
+goto(15, SubAlgorithm)	{Command -> SubAlgorithm.}	21	 
+goto(15, ASSIGN)	{AssignCmd -> ASSIGN.ArithmeticExpression TO VARIABLE}	22	 
+goto(15, READ)	{InCmd -> READ.VARIABLE}	23	 
+goto(15, PRINT)	{OutCmd -> PRINT.VARIABLE; OutCmd -> PRINT.STRING}	24	 
+goto(15, IF)	{ConditionCmd -> IF.RelationalExpression THEN Command; ConditionCmd -> IF.RelationalExpression THEN Command ELSE Command}	25	 
+goto(15, WHILE)	{RepeatCmd -> WHILE.RelationalExpression Command}	26	 
+goto(15, BEGIN)	{SubAlgorithm -> BEGIN.CommandList END}	27	 
+goto(22, ArithmeticExpression)	{AssignCmd -> ASSIGN ArithmeticExpression.TO VARIABLE; ArithmeticExpression -> ArithmeticExpression.+ ArithmeticTerm; ArithmeticExpression -> ArithmeticExpression.- ArithmeticTerm}	29	{AssignCmd -> ASSIGN ArithmeticExpression.TO VARIABLE; ArithmeticExpression -> ArithmeticExpression.+ ArithmeticTerm; ArithmeticExpression -> ArithmeticExpression.- ArithmeticTerm}
+goto(22, ArithmeticTerm)	{ArithmeticExpression -> ArithmeticTerm.; ArithmeticTerm -> ArithmeticTerm.* ArithmeticFactor; ArithmeticTerm -> ArithmeticTerm./ ArithmeticFactor}	30	{ArithmeticExpression -> ArithmeticTerm.; ArithmeticTerm -> ArithmeticTerm.* ArithmeticFactor; ArithmeticTerm -> ArithmeticTerm./ ArithmeticFactor}
+goto(22, ArithmeticFactor)	{ArithmeticTerm -> ArithmeticFactor.}	31	{ArithmeticTerm -> ArithmeticFactor.}
+goto(22, NUMINT)	{ArithmeticFactor -> NUMINT.}	32	{ArithmeticFactor -> NUMINT.}
+goto(22, NUMREAL)	{ArithmeticFactor -> NUMREAL.}	33	{ArithmeticFactor -> NUMREAL.}
+goto(22, VARIABLE)	{ArithmeticFactor -> VARIABLE.}	34	{ArithmeticFactor -> VARIABLE.}
+goto(22, ()	{ArithmeticFactor -> (.ArithmeticExpression )}	35	{ArithmeticFactor -> (.ArithmeticExpression ); ArithmeticExpression -> .ArithmeticExpression + ArithmeticTerm; ArithmeticExpression -> .ArithmeticExpression - ArithmeticTerm; ArithmeticExpression -> .ArithmeticTerm; ArithmeticTerm -> .ArithmeticTerm * ArithmeticFactor; ArithmeticTerm -> .ArithmeticTerm / ArithmeticFactor; ArithmeticTerm -> .ArithmeticFactor; ArithmeticFactor -> .NUMINT; ArithmeticFactor -> .NUMREAL; ArithmeticFactor -> .VARIABLE; ArithmeticFactor -> .( ArithmeticExpression )}
+goto(23, VARIABLE)	{InCmd -> READ VARIABLE.}	36	{InCmd -> READ VARIABLE.}
+goto(24, VARIABLE)	{OutCmd -> PRINT VARIABLE.}	37	{OutCmd -> PRINT VARIABLE.}
+goto(24, STRING)	{OutCmd -> PRINT STRING.}	38	{OutCmd -> PRINT STRING.}
+goto(25, RelationalExpression)	{ConditionCmd -> IF RelationalExpression.THEN Command; ConditionCmd -> IF RelationalExpression.THEN Command ELSE Command; RelationalExpression -> RelationalExpression.BooleanOperator RelationalTerm}	39	{ConditionCmd -> IF RelationalExpression.THEN Command; ConditionCmd -> IF RelationalExpression.THEN Command ELSE Command; RelationalExpression -> RelationalExpression.BooleanOperator RelationalTerm; BooleanOperator -> .AND; BooleanOperator -> .OR}
+goto(25, RelationalTerm)	{RelationalExpression -> RelationalTerm.}	40	{RelationalExpression -> RelationalTerm.}
+goto(25, ArithmeticExpression)	{RelationalTerm -> ArithmeticExpression.OP_REL ArithmeticExpression; ArithmeticExpression -> ArithmeticExpression.+ ArithmeticTerm; ArithmeticExpression -> ArithmeticExpression.- ArithmeticTerm}	41	{RelationalTerm -> ArithmeticExpression.OP_REL ArithmeticExpression; ArithmeticExpression -> ArithmeticExpression.+ ArithmeticTerm; ArithmeticExpression -> ArithmeticExpression.- ArithmeticTerm}
+goto(25, ()	{RelationalTerm -> (.RelationalExpression ); ArithmeticFactor -> (.ArithmeticExpression )}	42	{RelationalTerm -> (.RelationalExpression ); ArithmeticFactor -> (.ArithmeticExpression ); RelationalExpression -> .RelationalExpression BooleanOperator RelationalTerm; RelationalExpression -> .RelationalTerm; ArithmeticExpression -> .ArithmeticExpression + ArithmeticTerm; ArithmeticExpression -> .ArithmeticExpression - ArithmeticTerm; ArithmeticExpression -> .ArithmeticTerm; RelationalTerm -> .ArithmeticExpression OP_REL ArithmeticExpression; RelationalTerm -> .( RelationalExpression ); ArithmeticTerm -> .ArithmeticTerm * ArithmeticFactor; ArithmeticTerm -> .ArithmeticTerm / ArithmeticFactor; ArithmeticTerm -> .ArithmeticFactor; ArithmeticFactor -> .NUMINT; ArithmeticFactor -> .NUMREAL; ArithmeticFactor -> .VARIABLE; ArithmeticFactor -> .( ArithmeticExpression )}
+goto(25, ArithmeticTerm)	{ArithmeticExpression -> ArithmeticTerm.; ArithmeticTerm -> ArithmeticTerm.* ArithmeticFactor; ArithmeticTerm -> ArithmeticTerm./ ArithmeticFactor}	30	 
+goto(25, ArithmeticFactor)	{ArithmeticTerm -> ArithmeticFactor.}	31	 
+goto(25, NUMINT)	{ArithmeticFactor -> NUMINT.}	32	 
+goto(25, NUMREAL)	{ArithmeticFactor -> NUMREAL.}	33	 
+goto(25, VARIABLE)	{ArithmeticFactor -> VARIABLE.}	34	 
+goto(26, RelationalExpression)	{RepeatCmd -> WHILE RelationalExpression.Command; RelationalExpression -> RelationalExpression.BooleanOperator RelationalTerm}	43	{RepeatCmd -> WHILE RelationalExpression.Command; RelationalExpression -> RelationalExpression.BooleanOperator RelationalTerm; Command -> .AssignCmd; Command -> .InCmd; Command -> .OutCmd; Command -> .ConditionCmd; Command -> .RepeatCmd; Command -> .SubAlgorithm; BooleanOperator -> .AND; BooleanOperator -> .OR; AssignCmd -> .ASSIGN ArithmeticExpression TO VARIABLE; InCmd -> .READ VARIABLE; OutCmd -> .PRINT VARIABLE; OutCmd -> .PRINT STRING; ConditionCmd -> .IF RelationalExpression THEN Command; ConditionCmd -> .IF RelationalExpression THEN Command ELSE Command; RepeatCmd -> .WHILE RelationalExpression Command; SubAlgorithm -> .BEGIN CommandList END}
+goto(26, RelationalTerm)	{RelationalExpression -> RelationalTerm.}	40	 
+goto(26, ArithmeticExpression)	{RelationalTerm -> ArithmeticExpression.OP_REL ArithmeticExpression; ArithmeticExpression -> ArithmeticExpression.+ ArithmeticTerm; ArithmeticExpression -> ArithmeticExpression.- ArithmeticTerm}	41	 
+goto(26, ()	{RelationalTerm -> (.RelationalExpression ); ArithmeticFactor -> (.ArithmeticExpression )}	42	 
+goto(26, ArithmeticTerm)	{ArithmeticExpression -> ArithmeticTerm.; ArithmeticTerm -> ArithmeticTerm.* ArithmeticFactor; ArithmeticTerm -> ArithmeticTerm./ ArithmeticFactor}	30	 
+goto(26, ArithmeticFactor)	{ArithmeticTerm -> ArithmeticFactor.}	31	 
+goto(26, NUMINT)	{ArithmeticFactor -> NUMINT.}	32	 
+goto(26, NUMREAL)	{ArithmeticFactor -> NUMREAL.}	33	 
+goto(26, VARIABLE)	{ArithmeticFactor -> VARIABLE.}	34	 
+goto(27, CommandList)	{SubAlgorithm -> BEGIN CommandList.END}	44	{SubAlgorithm -> BEGIN CommandList.END}
+goto(27, Command)	{CommandList -> Command.CommandList; CommandList -> Command.}	15	 
+goto(27, AssignCmd)	{Command -> AssignCmd.}	16	 
+goto(27, InCmd)	{Command -> InCmd.}	17	 
+goto(27, OutCmd)	{Command -> OutCmd.}	18	 
+goto(27, ConditionCmd)	{Command -> ConditionCmd.}	19	 
+goto(27, RepeatCmd)	{Command -> RepeatCmd.}	20	 
+goto(27, SubAlgorithm)	{Command -> SubAlgorithm.}	21	 
+goto(27, ASSIGN)	{AssignCmd -> ASSIGN.ArithmeticExpression TO VARIABLE}	22	 
+goto(27, READ)	{InCmd -> READ.VARIABLE}	23	 
+goto(27, PRINT)	{OutCmd -> PRINT.VARIABLE; OutCmd -> PRINT.STRING}	24	 
+goto(27, IF)	{ConditionCmd -> IF.RelationalExpression THEN Command; ConditionCmd -> IF.RelationalExpression THEN Command ELSE Command}	25	 
+goto(27, WHILE)	{RepeatCmd -> WHILE.RelationalExpression Command}	26	 
+goto(27, BEGIN)	{SubAlgorithm -> BEGIN.CommandList END}	27	 
+goto(29, TO)	{AssignCmd -> ASSIGN ArithmeticExpression TO.VARIABLE}	45	{AssignCmd -> ASSIGN ArithmeticExpression TO.VARIABLE}
+goto(29, +)	{ArithmeticExpression -> ArithmeticExpression +.ArithmeticTerm}	46	{ArithmeticExpression -> ArithmeticExpression +.ArithmeticTerm; ArithmeticTerm -> .ArithmeticTerm * ArithmeticFactor; ArithmeticTerm -> .ArithmeticTerm / ArithmeticFactor; ArithmeticTerm -> .ArithmeticFactor; ArithmeticFactor -> .NUMINT; ArithmeticFactor -> .NUMREAL; ArithmeticFactor -> .VARIABLE; ArithmeticFactor -> .( ArithmeticExpression )}
+goto(29, -)	{ArithmeticExpression -> ArithmeticExpression -.ArithmeticTerm}	47	{ArithmeticExpression -> ArithmeticExpression -.ArithmeticTerm; ArithmeticTerm -> .ArithmeticTerm * ArithmeticFactor; ArithmeticTerm -> .ArithmeticTerm / ArithmeticFactor; ArithmeticTerm -> .ArithmeticFactor; ArithmeticFactor -> .NUMINT; ArithmeticFactor -> .NUMREAL; ArithmeticFactor -> .VARIABLE; ArithmeticFactor -> .( ArithmeticExpression )}
+goto(30, *)	{ArithmeticTerm -> ArithmeticTerm *.ArithmeticFactor}	48	{ArithmeticTerm -> ArithmeticTerm *.ArithmeticFactor; ArithmeticFactor -> .NUMINT; ArithmeticFactor -> .NUMREAL; ArithmeticFactor -> .VARIABLE; ArithmeticFactor -> .( ArithmeticExpression )}
+goto(30, /)	{ArithmeticTerm -> ArithmeticTerm /.ArithmeticFactor}	49	{ArithmeticTerm -> ArithmeticTerm /.ArithmeticFactor; ArithmeticFactor -> .NUMINT; ArithmeticFactor -> .NUMREAL; ArithmeticFactor -> .VARIABLE; ArithmeticFactor -> .( ArithmeticExpression )}
+goto(35, ArithmeticExpression)	{ArithmeticFactor -> ( ArithmeticExpression.); ArithmeticExpression -> ArithmeticExpression.+ ArithmeticTerm; ArithmeticExpression -> ArithmeticExpression.- ArithmeticTerm}	50	{ArithmeticFactor -> ( ArithmeticExpression.); ArithmeticExpression -> ArithmeticExpression.+ ArithmeticTerm; ArithmeticExpression -> ArithmeticExpression.- ArithmeticTerm}
+goto(35, ArithmeticTerm)	{ArithmeticExpression -> ArithmeticTerm.; ArithmeticTerm -> ArithmeticTerm.* ArithmeticFactor; ArithmeticTerm -> ArithmeticTerm./ ArithmeticFactor}	30	 
+goto(35, ArithmeticFactor)	{ArithmeticTerm -> ArithmeticFactor.}	31	 
+goto(35, NUMINT)	{ArithmeticFactor -> NUMINT.}	32	 
+goto(35, NUMREAL)	{ArithmeticFactor -> NUMREAL.}	33	 
+goto(35, VARIABLE)	{ArithmeticFactor -> VARIABLE.}	34	 
+goto(35, ()	{ArithmeticFactor -> (.ArithmeticExpression )}	35	 
+goto(39, THEN)	{ConditionCmd -> IF RelationalExpression THEN.Command; ConditionCmd -> IF RelationalExpression THEN.Command ELSE Command}	51	{ConditionCmd -> IF RelationalExpression THEN.Command; ConditionCmd -> IF RelationalExpression THEN.Command ELSE Command; Command -> .AssignCmd; Command -> .InCmd; Command -> .OutCmd; Command -> .ConditionCmd; Command -> .RepeatCmd; Command -> .SubAlgorithm; AssignCmd -> .ASSIGN ArithmeticExpression TO VARIABLE; InCmd -> .READ VARIABLE; OutCmd -> .PRINT VARIABLE; OutCmd -> .PRINT STRING; ConditionCmd -> .IF RelationalExpression THEN Command; ConditionCmd -> .IF RelationalExpression THEN Command ELSE Command; RepeatCmd -> .WHILE RelationalExpression Command; SubAlgorithm -> .BEGIN CommandList END}
+goto(39, BooleanOperator)	{RelationalExpression -> RelationalExpression BooleanOperator.RelationalTerm}	52	{RelationalExpression -> RelationalExpression BooleanOperator.RelationalTerm; RelationalTerm -> .ArithmeticExpression OP_REL ArithmeticExpression; RelationalTerm -> .( RelationalExpression ); ArithmeticExpression -> .ArithmeticExpression + ArithmeticTerm; ArithmeticExpression -> .ArithmeticExpression - ArithmeticTerm; ArithmeticExpression -> .ArithmeticTerm; ArithmeticTerm -> .ArithmeticTerm * ArithmeticFactor; ArithmeticTerm -> .ArithmeticTerm / ArithmeticFactor; ArithmeticTerm -> .ArithmeticFactor; ArithmeticFactor -> .NUMINT; ArithmeticFactor -> .NUMREAL; ArithmeticFactor -> .VARIABLE; ArithmeticFactor -> .( ArithmeticExpression )}
+goto(39, AND)	{BooleanOperator -> AND.}	53	{BooleanOperator -> AND.}
+goto(39, OR)	{BooleanOperator -> OR.}	54	{BooleanOperator -> OR.}
+goto(41, OP_REL)	{RelationalTerm -> ArithmeticExpression OP_REL.ArithmeticExpression}	55	{RelationalTerm -> ArithmeticExpression OP_REL.ArithmeticExpression; ArithmeticExpression -> .ArithmeticExpression + ArithmeticTerm; ArithmeticExpression -> .ArithmeticExpression - ArithmeticTerm; ArithmeticExpression -> .ArithmeticTerm; ArithmeticTerm -> .ArithmeticTerm * ArithmeticFactor; ArithmeticTerm -> .ArithmeticTerm / ArithmeticFactor; ArithmeticTerm -> .ArithmeticFactor; ArithmeticFactor -> .NUMINT; ArithmeticFactor -> .NUMREAL; ArithmeticFactor -> .VARIABLE; ArithmeticFactor -> .( ArithmeticExpression )}
+goto(41, +)	{ArithmeticExpression -> ArithmeticExpression +.ArithmeticTerm}	46	 
+goto(41, -)	{ArithmeticExpression -> ArithmeticExpression -.ArithmeticTerm}	47	 
+goto(42, RelationalExpression)	{RelationalTerm -> ( RelationalExpression.); RelationalExpression -> RelationalExpression.BooleanOperator RelationalTerm}	56	{RelationalTerm -> ( RelationalExpression.); RelationalExpression -> RelationalExpression.BooleanOperator RelationalTerm; BooleanOperator -> .AND; BooleanOperator -> .OR}
+goto(42, ArithmeticExpression)	{ArithmeticFactor -> ( ArithmeticExpression.); ArithmeticExpression -> ArithmeticExpression.+ ArithmeticTerm; ArithmeticExpression -> ArithmeticExpression.- ArithmeticTerm; RelationalTerm -> ArithmeticExpression.OP_REL ArithmeticExpression}	57	{ArithmeticFactor -> ( ArithmeticExpression.); ArithmeticExpression -> ArithmeticExpression.+ ArithmeticTerm; ArithmeticExpression -> ArithmeticExpression.- ArithmeticTerm; RelationalTerm -> ArithmeticExpression.OP_REL ArithmeticExpression}
+goto(42, RelationalTerm)	{RelationalExpression -> RelationalTerm.}	40	 
+goto(42, ArithmeticTerm)	{ArithmeticExpression -> ArithmeticTerm.; ArithmeticTerm -> ArithmeticTerm.* ArithmeticFactor; ArithmeticTerm -> ArithmeticTerm./ ArithmeticFactor}	30	 
+goto(42, ()	{RelationalTerm -> (.RelationalExpression ); ArithmeticFactor -> (.ArithmeticExpression )}	42	 
+goto(42, ArithmeticFactor)	{ArithmeticTerm -> ArithmeticFactor.}	31	 
+goto(42, NUMINT)	{ArithmeticFactor -> NUMINT.}	32	 
+goto(42, NUMREAL)	{ArithmeticFactor -> NUMREAL.}	33	 
+goto(42, VARIABLE)	{ArithmeticFactor -> VARIABLE.}	34	 
+goto(43, Command)	{RepeatCmd -> WHILE RelationalExpression Command.}	58	{RepeatCmd -> WHILE RelationalExpression Command.}
+goto(43, BooleanOperator)	{RelationalExpression -> RelationalExpression BooleanOperator.RelationalTerm}	52	 
+goto(43, AssignCmd)	{Command -> AssignCmd.}	16	 
+goto(43, InCmd)	{Command -> InCmd.}	17	 
+goto(43, OutCmd)	{Command -> OutCmd.}	18	 
+goto(43, ConditionCmd)	{Command -> ConditionCmd.}	19	 
+goto(43, RepeatCmd)	{Command -> RepeatCmd.}	20	 
+goto(43, SubAlgorithm)	{Command -> SubAlgorithm.}	21	 
+goto(43, AND)	{BooleanOperator -> AND.}	53	 
+goto(43, OR)	{BooleanOperator -> OR.}	54	 
+goto(43, ASSIGN)	{AssignCmd -> ASSIGN.ArithmeticExpression TO VARIABLE}	22	 
+goto(43, READ)	{InCmd -> READ.VARIABLE}	23	 
+goto(43, PRINT)	{OutCmd -> PRINT.VARIABLE; OutCmd -> PRINT.STRING}	24	 
+goto(43, IF)	{ConditionCmd -> IF.RelationalExpression THEN Command; ConditionCmd -> IF.RelationalExpression THEN Command ELSE Command}	25	 
+goto(43, WHILE)	{RepeatCmd -> WHILE.RelationalExpression Command}	26	 
+goto(43, BEGIN)	{SubAlgorithm -> BEGIN.CommandList END}	27	 
+goto(44, END)	{SubAlgorithm -> BEGIN CommandList END.}	59	{SubAlgorithm -> BEGIN CommandList END.}
+goto(45, VARIABLE)	{AssignCmd -> ASSIGN ArithmeticExpression TO VARIABLE.}	60	{AssignCmd -> ASSIGN ArithmeticExpression TO VARIABLE.}
+goto(46, ArithmeticTerm)	{ArithmeticExpression -> ArithmeticExpression + ArithmeticTerm.; ArithmeticTerm -> ArithmeticTerm.* ArithmeticFactor; ArithmeticTerm -> ArithmeticTerm./ ArithmeticFactor}	61	{ArithmeticExpression -> ArithmeticExpression + ArithmeticTerm.; ArithmeticTerm -> ArithmeticTerm.* ArithmeticFactor; ArithmeticTerm -> ArithmeticTerm./ ArithmeticFactor}
+goto(46, ArithmeticFactor)	{ArithmeticTerm -> ArithmeticFactor.}	31	 
+goto(46, NUMINT)	{ArithmeticFactor -> NUMINT.}	32	 
+goto(46, NUMREAL)	{ArithmeticFactor -> NUMREAL.}	33	 
+goto(46, VARIABLE)	{ArithmeticFactor -> VARIABLE.}	34	 
+goto(46, ()	{ArithmeticFactor -> (.ArithmeticExpression )}	35	 
+goto(47, ArithmeticTerm)	{ArithmeticExpression -> ArithmeticExpression - ArithmeticTerm.; ArithmeticTerm -> ArithmeticTerm.* ArithmeticFactor; ArithmeticTerm -> ArithmeticTerm./ ArithmeticFactor}	62	{ArithmeticExpression -> ArithmeticExpression - ArithmeticTerm.; ArithmeticTerm -> ArithmeticTerm.* ArithmeticFactor; ArithmeticTerm -> ArithmeticTerm./ ArithmeticFactor}
+goto(47, ArithmeticFactor)	{ArithmeticTerm -> ArithmeticFactor.}	31	 
+goto(47, NUMINT)	{ArithmeticFactor -> NUMINT.}	32	 
+goto(47, NUMREAL)	{ArithmeticFactor -> NUMREAL.}	33	 
+goto(47, VARIABLE)	{ArithmeticFactor -> VARIABLE.}	34	 
+goto(47, ()	{ArithmeticFactor -> (.ArithmeticExpression )}	35	 
+goto(48, ArithmeticFactor)	{ArithmeticTerm -> ArithmeticTerm * ArithmeticFactor.}	63	{ArithmeticTerm -> ArithmeticTerm * ArithmeticFactor.}
+goto(48, NUMINT)	{ArithmeticFactor -> NUMINT.}	32	 
+goto(48, NUMREAL)	{ArithmeticFactor -> NUMREAL.}	33	 
+goto(48, VARIABLE)	{ArithmeticFactor -> VARIABLE.}	34	 
+goto(48, ()	{ArithmeticFactor -> (.ArithmeticExpression )}	35	 
+goto(49, ArithmeticFactor)	{ArithmeticTerm -> ArithmeticTerm / ArithmeticFactor.}	64	{ArithmeticTerm -> ArithmeticTerm / ArithmeticFactor.}
+goto(49, NUMINT)	{ArithmeticFactor -> NUMINT.}	32	 
+goto(49, NUMREAL)	{ArithmeticFactor -> NUMREAL.}	33	 
+goto(49, VARIABLE)	{ArithmeticFactor -> VARIABLE.}	34	 
+goto(49, ()	{ArithmeticFactor -> (.ArithmeticExpression )}	35	 
+goto(50, ))	{ArithmeticFactor -> ( ArithmeticExpression ).}	65	{ArithmeticFactor -> ( ArithmeticExpression ).}
+goto(50, +)	{ArithmeticExpression -> ArithmeticExpression +.ArithmeticTerm}	46	 
+goto(50, -)	{ArithmeticExpression -> ArithmeticExpression -.ArithmeticTerm}	47	 
+goto(51, Command)	{ConditionCmd -> IF RelationalExpression THEN Command.; ConditionCmd -> IF RelationalExpression THEN Command.ELSE Command}	66	{ConditionCmd -> IF RelationalExpression THEN Command.; ConditionCmd -> IF RelationalExpression THEN Command.ELSE Command}
+goto(51, AssignCmd)	{Command -> AssignCmd.}	16	 
+goto(51, InCmd)	{Command -> InCmd.}	17	 
+goto(51, OutCmd)	{Command -> OutCmd.}	18	 
+goto(51, ConditionCmd)	{Command -> ConditionCmd.}	19	 
+goto(51, RepeatCmd)	{Command -> RepeatCmd.}	20	 
+goto(51, SubAlgorithm)	{Command -> SubAlgorithm.}	21	 
+goto(51, ASSIGN)	{AssignCmd -> ASSIGN.ArithmeticExpression TO VARIABLE}	22	 
+goto(51, READ)	{InCmd -> READ.VARIABLE}	23	 
+goto(51, PRINT)	{OutCmd -> PRINT.VARIABLE; OutCmd -> PRINT.STRING}	24	 
+goto(51, IF)	{ConditionCmd -> IF.RelationalExpression THEN Command; ConditionCmd -> IF.RelationalExpression THEN Command ELSE Command}	25	 
+goto(51, WHILE)	{RepeatCmd -> WHILE.RelationalExpression Command}	26	 
+goto(51, BEGIN)	{SubAlgorithm -> BEGIN.CommandList END}	27	 
+goto(52, RelationalTerm)	{RelationalExpression -> RelationalExpression BooleanOperator RelationalTerm.}	67	{RelationalExpression -> RelationalExpression BooleanOperator RelationalTerm.}
+goto(52, ArithmeticExpression)	{RelationalTerm -> ArithmeticExpression.OP_REL ArithmeticExpression; ArithmeticExpression -> ArithmeticExpression.+ ArithmeticTerm; ArithmeticExpression -> ArithmeticExpression.- ArithmeticTerm}	41	 
+goto(52, ()	{RelationalTerm -> (.RelationalExpression ); ArithmeticFactor -> (.ArithmeticExpression )}	42	 
+goto(52, ArithmeticTerm)	{ArithmeticExpression -> ArithmeticTerm.; ArithmeticTerm -> ArithmeticTerm.* ArithmeticFactor; ArithmeticTerm -> ArithmeticTerm./ ArithmeticFactor}	30	 
+goto(52, ArithmeticFactor)	{ArithmeticTerm -> ArithmeticFactor.}	31	 
+goto(52, NUMINT)	{ArithmeticFactor -> NUMINT.}	32	 
+goto(52, NUMREAL)	{ArithmeticFactor -> NUMREAL.}	33	 
+goto(52, VARIABLE)	{ArithmeticFactor -> VARIABLE.}	34	 
+goto(55, ArithmeticExpression)	{RelationalTerm -> ArithmeticExpression OP_REL ArithmeticExpression.; ArithmeticExpression -> ArithmeticExpression.+ ArithmeticTerm; ArithmeticExpression -> ArithmeticExpression.- ArithmeticTerm}	68	{RelationalTerm -> ArithmeticExpression OP_REL ArithmeticExpression.; ArithmeticExpression -> ArithmeticExpression.+ ArithmeticTerm; ArithmeticExpression -> ArithmeticExpression.- ArithmeticTerm}
+goto(55, ArithmeticTerm)	{ArithmeticExpression -> ArithmeticTerm.; ArithmeticTerm -> ArithmeticTerm.* ArithmeticFactor; ArithmeticTerm -> ArithmeticTerm./ ArithmeticFactor}	30	 
+goto(55, ArithmeticFactor)	{ArithmeticTerm -> ArithmeticFactor.}	31	 
+goto(55, NUMINT)	{ArithmeticFactor -> NUMINT.}	32	 
+goto(55, NUMREAL)	{ArithmeticFactor -> NUMREAL.}	33	 
+goto(55, VARIABLE)	{ArithmeticFactor -> VARIABLE.}	34	 
+goto(55, ()	{ArithmeticFactor -> (.ArithmeticExpression )}	35	 
+goto(56, ))	{RelationalTerm -> ( RelationalExpression ).}	69	{RelationalTerm -> ( RelationalExpression ).}
+goto(56, BooleanOperator)	{RelationalExpression -> RelationalExpression BooleanOperator.RelationalTerm}	52	 
+goto(56, AND)	{BooleanOperator -> AND.}	53	 
+goto(56, OR)	{BooleanOperator -> OR.}	54	 
+goto(57, ))	{ArithmeticFactor -> ( ArithmeticExpression ).}	65	 
+goto(57, +)	{ArithmeticExpression -> ArithmeticExpression +.ArithmeticTerm}	46	 
+goto(57, -)	{ArithmeticExpression -> ArithmeticExpression -.ArithmeticTerm}	47	 
+goto(57, OP_REL)	{RelationalTerm -> ArithmeticExpression OP_REL.ArithmeticExpression}	55	 
+goto(61, *)	{ArithmeticTerm -> ArithmeticTerm *.ArithmeticFactor}	48	 
+goto(61, /)	{ArithmeticTerm -> ArithmeticTerm /.ArithmeticFactor}	49	 
+goto(62, *)	{ArithmeticTerm -> ArithmeticTerm *.ArithmeticFactor}	48	 
+goto(62, /)	{ArithmeticTerm -> ArithmeticTerm /.ArithmeticFactor}	49	 
+goto(66, ELSE)	{ConditionCmd -> IF RelationalExpression THEN Command ELSE.Command}	70	{ConditionCmd -> IF RelationalExpression THEN Command ELSE.Command; Command -> .AssignCmd; Command -> .InCmd; Command -> .OutCmd; Command -> .ConditionCmd; Command -> .RepeatCmd; Command -> .SubAlgorithm; AssignCmd -> .ASSIGN ArithmeticExpression TO VARIABLE; InCmd -> .READ VARIABLE; OutCmd -> .PRINT VARIABLE; OutCmd -> .PRINT STRING; ConditionCmd -> .IF RelationalExpression THEN Command; ConditionCmd -> .IF RelationalExpression THEN Command ELSE Command; RepeatCmd -> .WHILE RelationalExpression Command; SubAlgorithm -> .BEGIN CommandList END}
+goto(68, +)	{ArithmeticExpression -> ArithmeticExpression +.ArithmeticTerm}	46	 
+goto(68, -)	{ArithmeticExpression -> ArithmeticExpression -.ArithmeticTerm}	47	 
+goto(70, Command)	{ConditionCmd -> IF RelationalExpression THEN Command ELSE Command.}	71	{ConditionCmd -> IF RelationalExpression THEN Command ELSE Command.}
+goto(70, AssignCmd)	{Command -> AssignCmd.}	16	 
+goto(70, InCmd)	{Command -> InCmd.}	17	 
+goto(70, OutCmd)	{Command -> OutCmd.}	18	 
+goto(70, ConditionCmd)	{Command -> ConditionCmd.}	19	 
+goto(70, RepeatCmd)	{Command -> RepeatCmd.}	20	 
+goto(70, SubAlgorithm)	{Command -> SubAlgorithm.}	21	 
+goto(70, ASSIGN)	{AssignCmd -> ASSIGN.ArithmeticExpression TO VARIABLE}	22	 
+goto(70, READ)	{InCmd -> READ.VARIABLE}	23	 
+goto(70, PRINT)	{OutCmd -> PRINT.VARIABLE; OutCmd -> PRINT.STRING}	24	 
+goto(70, IF)	{ConditionCmd -> IF.RelationalExpression THEN Command; ConditionCmd -> IF.RelationalExpression THEN Command ELSE Command}	25	 
+goto(70, WHILE)	{RepeatCmd -> WHILE.RelationalExpression Command}	26	 
+goto(70, BEGIN)	{SubAlgorithm -> BEGIN.CommandList END}	27	 

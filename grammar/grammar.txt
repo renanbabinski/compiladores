@@ -21,7 +21,7 @@ RelationalTerm -> ArithmeticExpression OP_REL ArithmeticExpression
 RelationalTerm -> ( RelationalExpression )
 BooleanOperator -> AND
 BooleanOperator -> OR
-CommandList -> Commannd CommandList
+CommandList -> Command CommandList
 CommandList -> Command
 Command -> AssignCmd
 Command -> InCmd
