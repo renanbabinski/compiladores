@@ -97,7 +97,7 @@
             "lexema": "numero1"
         },
         {
-            "nome": "OpRelBigger",
+            "nome": "OpRel",
             "lexema": ">"
         },
         {
@@ -221,7 +221,7 @@
             "lexema": "numero1"
         },
         {
-            "nome": "OpRelBigger",
+            "nome": "OpRel",
             "lexema": ">"
         },
         {
@@ -237,7 +237,7 @@
             "lexema": "numero2"
         },
         {
-            "nome": "OpRelSmallerEqual",
+            "nome": "OpRel",
             "lexema": "<="
         },
         {
@@ -253,7 +253,7 @@
             "lexema": "numero1"
         },
         {
-            "nome": "OpRelBigger",
+            "nome": "OpRel",
             "lexema": ">"
         },
         {
@@ -269,7 +269,7 @@
             "lexema": "numero2"
         },
         {
-            "nome": "OpRelDiff",
+            "nome": "OpRel",
             "lexema": "<>"
         },
         {
@@ -353,7 +353,7 @@
             "lexema": "numero2"
         },
         {
-            "nome": "OpRelBigger",
+            "nome": "OpRel",
             "lexema": ">"
         },
         {

@@ -42,5 +42,7 @@ class TipoToken(Enum):
     NumInt = 31
     NumReal = 32
 
+    KwElse = 33
+
 
 

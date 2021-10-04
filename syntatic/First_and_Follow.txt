@@ -1,0 +1,21 @@
+FIRST / FOLLOW table
+Nonterminal	FIRST	FOLLOW
+PROGRAM'	{Delim}	{$}
+PROGRAM	{Delim}	{$}
+STATEMENTLIST	{Var}	{Delim}
+STATEMENT	{Var}	{Var,Delim}
+VARTYPE	{KwInteger,KwReal}	{Var,Delim}
+ARITHMETICEXPRESSION	{NumInt,NumReal,Var,OpenPar}	{OpAritSum,OpAritSub,ClosePar,OpRel,OpBoolAnd,OpBoolOr,KwTo,KwThen,KwAssign,KwRead,KwPrint,KwIf,KwWhile,KwBegin}
+ARITHMETICTERM	{NumInt,NumReal,Var,OpenPar}	{OpAritSum,OpAritSub,OpAritMult,OpAritDiv,ClosePar,OpRel,OpBoolAnd,OpBoolOr,KwTo,KwThen,KwAssign,KwRead,KwPrint,KwIf,KwWhile,KwBegin}
+ARITHMETICFACTOR	{NumInt,NumReal,Var,OpenPar}	{OpAritSum,OpAritSub,OpAritMult,OpAritDiv,ClosePar,OpRel,OpBoolAnd,OpBoolOr,KwTo,KwThen,KwAssign,KwRead,KwPrint,KwIf,KwWhile,KwBegin}
+RELATIONALEXPRESSION	{OpenPar,NumInt,NumReal,Var}	{OpBoolAnd,OpBoolOr,ClosePar,KwThen,KwAssign,KwRead,KwPrint,KwIf,KwWhile,KwBegin}
+RELATIONALTERM	{OpenPar,NumInt,NumReal,Var}	{OpBoolAnd,OpBoolOr,ClosePar,KwThen,KwAssign,KwRead,KwPrint,KwIf,KwWhile,KwBegin}
+BOOLEANOPERATOR	{OpBoolAnd,OpBoolOr}	{OpenPar,NumInt,NumReal,Var}
+COMMANDLIST	{KwAssign,KwRead,KwPrint,KwIf,KwWhile,KwBegin}	{$,KwEnd}
+COMMAND	{KwAssign,KwRead,KwPrint,KwIf,KwWhile,KwBegin}	{KwAssign,KwRead,KwPrint,KwIf,KwWhile,KwBegin,$,KwElse,KwEnd}
+ASSIGNCMD	{KwAssign}	{KwAssign,KwRead,KwPrint,KwIf,KwWhile,KwBegin,$,KwElse,KwEnd}
+INCMD	{KwRead}	{KwAssign,KwRead,KwPrint,KwIf,KwWhile,KwBegin,$,KwElse,KwEnd}
+OUTCMD	{KwPrint}	{KwAssign,KwRead,KwPrint,KwIf,KwWhile,KwBegin,$,KwElse,KwEnd}
+CONDITIONCMD	{KwIf}	{KwAssign,KwRead,KwPrint,KwIf,KwWhile,KwBegin,$,KwElse,KwEnd}
+REPEATCMD	{KwWhile}	{KwAssign,KwRead,KwPrint,KwIf,KwWhile,KwBegin,$,KwElse,KwEnd}
+SUBALGORITHM	{KwBegin}	{KwAssign,KwRead,KwPrint,KwIf,KwWhile,KwBegin,$,KwElse,KwEnd}

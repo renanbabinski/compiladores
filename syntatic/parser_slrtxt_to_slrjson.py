@@ -9,7 +9,7 @@ import json
 lr_table = dict()
 
 #Arquivo TXT de entrada
-with open(r'C:\Users\Renan\Documents\GitHub\compiladores\lexico\slr_table.txt', 'r', encoding='utf-8') as file:
+with open(r'C:\Users\Renan\Documents\GitHub\compiladores\syntatic\slr_table.txt', 'r', encoding='utf-8') as file:
     lines = file.readlines()
 
     for line, num_line in zip(lines, range(len(lines))):
@@ -42,6 +42,6 @@ with open(r'C:\Users\Renan\Documents\GitHub\compiladores\lexico\slr_table.txt', 
            
 
 #Arquivo JSON de saída
-with open(r'C:\Users\Renan\Documents\GitHub\compiladores\lexico\slr_table.json', 'w', encoding='utf-8') as wfile:
+with open(r'C:\Users\Renan\Documents\GitHub\compiladores\syntatic\slr_table.json', 'w', encoding='utf-8') as wfile:
     json.dump(lr_table, wfile, ensure_ascii=False, indent=4)
 

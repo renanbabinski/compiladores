@@ -1,39 +1,39 @@
-Program' -> Program
-Program -> : STATEMENTS StatementList : ALGORITHM CommandList
-StatementList -> Statement StatementList
-StatementList -> Statement
-Statement -> VARIABLE : VarType
-VarType -> INTEGER
-VarType -> REAL
-ArithmeticExpression -> ArithmeticExpression + ArithmeticTerm
-ArithmeticExpression -> ArithmeticExpression - ArithmeticTerm
-ArithmeticExpression -> ArithmeticTerm
-ArithmeticTerm -> ArithmeticTerm * ArithmeticFactor
-ArithmeticTerm -> ArithmeticTerm / ArithmeticFactor
-ArithmeticTerm -> ArithmeticFactor
-ArithmeticFactor -> NUMINT
-ArithmeticFactor -> NUMREAL
-ArithmeticFactor -> VARIABLE
-ArithmeticFactor -> ( ArithmeticExpression )
-RelationalExpression -> RelationalExpression BooleanOperator RelationalTerm
-RelationalExpression -> RelationalTerm
-RelationalTerm -> ArithmeticExpression OP_REL ArithmeticExpression
-RelationalTerm -> ( RelationalExpression )
-BooleanOperator -> AND
-BooleanOperator -> OR
-CommandList -> Command CommandList
-CommandList -> Command
-Command -> AssignCmd
-Command -> InCmd
-Command -> OutCmd
-Command -> ConditionCmd
-Command -> RepeatCmd
-Command -> SubAlgorithm
-AssignCmd -> ASSIGN ArithmeticExpression TO VARIABLE
-InCmd -> READ VARIABLE
-OutCmd -> PRINT VARIABLE
-OutCmd -> PRINT STRING
-ConditionCmd -> IF RelationalExpression THEN Command
-ConditionCmd -> IF RelationalExpression THEN Command ELSE Command
-RepeatCmd -> WHILE RelationalExpression Command
-SubAlgorithm -> BEGIN CommandList END
+PROGRAM' -> PROGRAM
+PROGRAM -> Delim KwStatements STATEMENTLIST Delim KwAlgorithm COMMANDLIST
+STATEMENTLIST -> STATEMENT STATEMENTLIST 
+STATEMENTLIST -> STATEMENT 
+STATEMENT -> Var Delim VARTYPE
+VARTYPE -> KwInteger
+VARTYPE -> KwReal
+ARITHMETICEXPRESSION -> ARITHMETICEXPRESSION OpAritSum ARITHMETICTERM
+ARITHMETICEXPRESSION -> ARITHMETICEXPRESSION OpAritSub ARITHMETICTERM
+ARITHMETICEXPRESSION -> ARITHMETICTERM
+ARITHMETICTERM -> ARITHMETICTERM OpAritMult ARITHMETICFACTOR
+ARITHMETICTERM -> ARITHMETICTERM OpAritDiv ARITHMETICFACTOR
+ARITHMETICTERM -> ARITHMETICFACTOR
+ARITHMETICFACTOR -> NumInt
+ARITHMETICFACTOR -> NumReal
+ARITHMETICFACTOR -> Var
+ARITHMETICFACTOR -> OpenPar ARITHMETICEXPRESSION ClosePar
+RELATIONALEXPRESSION -> RELATIONALEXPRESSION BOOLEANOPERATOR RELATIONALTERM
+RELATIONALEXPRESSION -> RELATIONALTERM
+RELATIONALTERM -> ARITHMETICEXPRESSION OpRel ARITHMETICEXPRESSION 
+RELATIONALTERM-> OpenPar RELATIONALEXPRESSION ClosePar
+BOOLEANOPERATOR -> OpBoolAnd
+BOOLEANOPERATOR -> OpBoolOr
+COMMANDLIST-> COMMAND COMMANDLIST
+COMMANDLIST-> COMMAND 
+COMMAND -> ASSIGNCMD
+COMMAND -> INCMD
+COMMAND -> OUTCMD
+COMMAND -> CONDITIONCMD
+COMMAND -> REPEATCMD
+COMMAND -> SUBALGORITHM
+ASSIGNCMD -> KwAssign ARITHMETICEXPRESSION KwTo Var
+INCMD -> KwRead Var 
+OUTCMD -> KwPrint Var 
+OUTCMD -> KwPrint String
+CONDITIONCMD -> KwIf RELATIONALEXPRESSION KwThen COMMAND 
+CONDITIONCMD -> KwIf RELATIONALEXPRESSION KwThen COMMAND KwElse COMMAND 
+REPEATCMD -> KwWhile RELATIONALEXPRESSION COMMAND 
+SUBALGORITHM -> KwBegin COMMANDLIST KwEnd 

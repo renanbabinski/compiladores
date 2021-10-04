@@ -1,6 +1,6 @@
 LR table
 State	ACTION	GOTO
-:	STATEMENTS	ALGORITHM	VARIABLE	INTEGER	REAL	+	-	*	/	NUMINT	NUMREAL	(	)	OP_REL	AND	OR	ASSIGN	TO	READ	PRINT	STRING	IF	THEN	ELSE	WHILE	BEGIN	END	$	Program'	Program	StatementList	Statement	VarType	ArithmeticExpression	ArithmeticTerm	ArithmeticFactor	RelationalExpression	RelationalTerm	BooleanOperator	CommandList	Command	AssignCmd	InCmd	OutCmd	ConditionCmd	RepeatCmd	SubAlgorithm
+Delim	KwStatements	KwAlgorithm	Var	KwInteger	KwReal	OpAritSum	OpAritSub	OpAritMult	OpAritDiv	NumInt	NumReal	OpenPar	ClosePar	OpRel	OpBoolAnd	OpBoolOr	KwAssign	KwTo	KwRead	KwPrint	String	KwIf	KwThen	KwElse	KwWhile	KwBegin	KwEnd	$	PROGRAM'	PROGRAM	STATEMENTLIST	STATEMENT	VARTYPE	ARITHMETICEXPRESSION	ARITHMETICTERM	ARITHMETICFACTOR	RELATIONALEXPRESSION	RELATIONALTERM	BOOLEANOPERATOR	COMMANDLIST	COMMAND	ASSIGNCMD	INCMD	OUTCMD	CONDITIONCMD	REPEATCMD	SUBALGORITHM
 0	s2	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	1	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 
 1	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	acc	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 
 2	 	s3	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 

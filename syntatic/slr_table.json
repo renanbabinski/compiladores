@@ -1,6 +1,6 @@
 {
     "ACTIONS": {
-        ":": [
+        "Delim": [
             {
                 "state": "0",
                 "action": "s2"
@@ -290,7 +290,7 @@
                 "action": " "
             }
         ],
-        "STATEMENTS": [
+        "KwStatements": [
             {
                 "state": "0",
                 "action": " "
@@ -580,7 +580,7 @@
                 "action": " "
             }
         ],
-        "ALGORITHM": [
+        "KwAlgorithm": [
             {
                 "state": "0",
                 "action": " "
@@ -870,7 +870,7 @@
                 "action": " "
             }
         ],
-        "VARIABLE": [
+        "Var": [
             {
                 "state": "0",
                 "action": " "
@@ -1160,7 +1160,7 @@
                 "action": " "
             }
         ],
-        "INTEGER": [
+        "KwInteger": [
             {
                 "state": "0",
                 "action": " "
@@ -1450,7 +1450,7 @@
                 "action": " "
             }
         ],
-        "REAL": [
+        "KwReal": [
             {
                 "state": "0",
                 "action": " "
@@ -1740,7 +1740,7 @@
                 "action": " "
             }
         ],
-        "+": [
+        "OpAritSum": [
             {
                 "state": "0",
                 "action": " "
@@ -2030,7 +2030,7 @@
                 "action": " "
             }
         ],
-        "-": [
+        "OpAritSub": [
             {
                 "state": "0",
                 "action": " "
@@ -2320,7 +2320,7 @@
                 "action": " "
             }
         ],
-        "*": [
+        "OpAritMult": [
             {
                 "state": "0",
                 "action": " "
@@ -2610,7 +2610,7 @@
                 "action": " "
             }
         ],
-        "/": [
+        "OpAritDiv": [
             {
                 "state": "0",
                 "action": " "
@@ -2900,7 +2900,7 @@
                 "action": " "
             }
         ],
-        "NUMINT": [
+        "NumInt": [
             {
                 "state": "0",
                 "action": " "
@@ -3190,7 +3190,7 @@
                 "action": " "
             }
         ],
-        "NUMREAL": [
+        "NumReal": [
             {
                 "state": "0",
                 "action": " "
@@ -3480,7 +3480,7 @@
                 "action": " "
             }
         ],
-        "(": [
+        "OpenPar": [
             {
                 "state": "0",
                 "action": " "
@@ -3770,7 +3770,7 @@
                 "action": " "
             }
         ],
-        ")": [
+        "ClosePar": [
             {
                 "state": "0",
                 "action": " "
@@ -4060,7 +4060,7 @@
                 "action": " "
             }
         ],
-        "OP_REL": [
+        "OpRel": [
             {
                 "state": "0",
                 "action": " "
@@ -4350,7 +4350,7 @@
                 "action": " "
             }
         ],
-        "AND": [
+        "OpBoolAnd": [
             {
                 "state": "0",
                 "action": " "
@@ -4640,7 +4640,7 @@
                 "action": " "
             }
         ],
-        "OR": [
+        "OpBoolOr": [
             {
                 "state": "0",
                 "action": " "
@@ -4930,7 +4930,7 @@
                 "action": " "
             }
         ],
-        "ASSIGN": [
+        "KwAssign": [
             {
                 "state": "0",
                 "action": " "
@@ -5220,7 +5220,7 @@
                 "action": "r36"
             }
         ],
-        "TO": [
+        "KwTo": [
             {
                 "state": "0",
                 "action": " "
@@ -5510,7 +5510,7 @@
                 "action": " "
             }
         ],
-        "READ": [
+        "KwRead": [
             {
                 "state": "0",
                 "action": " "
@@ -5800,7 +5800,7 @@
                 "action": "r36"
             }
         ],
-        "PRINT": [
+        "KwPrint": [
             {
                 "state": "0",
                 "action": " "
@@ -6090,7 +6090,7 @@
                 "action": "r36"
             }
         ],
-        "STRING": [
+        "String": [
             {
                 "state": "0",
                 "action": " "
@@ -6380,7 +6380,7 @@
                 "action": " "
             }
         ],
-        "IF": [
+        "KwIf": [
             {
                 "state": "0",
                 "action": " "
@@ -6670,7 +6670,7 @@
                 "action": "r36"
             }
         ],
-        "THEN": [
+        "KwThen": [
             {
                 "state": "0",
                 "action": " "
@@ -6960,7 +6960,7 @@
                 "action": " "
             }
         ],
-        "ELSE": [
+        "KwElse": [
             {
                 "state": "0",
                 "action": " "
@@ -7250,7 +7250,7 @@
                 "action": "r36"
             }
         ],
-        "WHILE": [
+        "KwWhile": [
             {
                 "state": "0",
                 "action": " "
@@ -7540,7 +7540,7 @@
                 "action": "r36"
             }
         ],
-        "BEGIN": [
+        "KwBegin": [
             {
                 "state": "0",
                 "action": " "
@@ -7830,7 +7830,7 @@
                 "action": "r36"
             }
         ],
-        "END": [
+        "KwEnd": [
             {
                 "state": "0",
                 "action": " "
@@ -8412,7 +8412,7 @@
         ]
     },
     "GOTO": {
-        "Program'": [
+        "PROGRAM'": [
             {
                 "state": "0",
                 "goto": " "
@@ -8702,7 +8702,7 @@
                 "goto": " "
             }
         ],
-        "Program": [
+        "PROGRAM": [
             {
                 "state": "0",
                 "goto": "1"
@@ -8992,7 +8992,7 @@
                 "goto": " "
             }
         ],
-        "StatementList": [
+        "STATEMENTLIST": [
             {
                 "state": "0",
                 "goto": " "
@@ -9282,7 +9282,7 @@
                 "goto": " "
             }
         ],
-        "Statement": [
+        "STATEMENT": [
             {
                 "state": "0",
                 "goto": " "
@@ -9572,7 +9572,7 @@
                 "goto": " "
             }
         ],
-        "VarType": [
+        "VARTYPE": [
             {
                 "state": "0",
                 "goto": " "
@@ -9862,7 +9862,7 @@
                 "goto": " "
             }
         ],
-        "ArithmeticExpression": [
+        "ARITHMETICEXPRESSION": [
             {
                 "state": "0",
                 "goto": " "
@@ -10152,7 +10152,7 @@
                 "goto": " "
             }
         ],
-        "ArithmeticTerm": [
+        "ARITHMETICTERM": [
             {
                 "state": "0",
                 "goto": " "
@@ -10442,7 +10442,7 @@
                 "goto": " "
             }
         ],
-        "ArithmeticFactor": [
+        "ARITHMETICFACTOR": [
             {
                 "state": "0",
                 "goto": " "
@@ -10732,7 +10732,7 @@
                 "goto": " "
             }
         ],
-        "RelationalExpression": [
+        "RELATIONALEXPRESSION": [
             {
                 "state": "0",
                 "goto": " "
@@ -11022,7 +11022,7 @@
                 "goto": " "
             }
         ],
-        "RelationalTerm": [
+        "RELATIONALTERM": [
             {
                 "state": "0",
                 "goto": " "
@@ -11312,7 +11312,7 @@
                 "goto": " "
             }
         ],
-        "BooleanOperator": [
+        "BOOLEANOPERATOR": [
             {
                 "state": "0",
                 "goto": " "
@@ -11602,7 +11602,7 @@
                 "goto": " "
             }
         ],
-        "CommandList": [
+        "COMMANDLIST": [
             {
                 "state": "0",
                 "goto": " "
@@ -11892,7 +11892,7 @@
                 "goto": " "
             }
         ],
-        "Command": [
+        "COMMAND": [
             {
                 "state": "0",
                 "goto": " "
@@ -12182,7 +12182,7 @@
                 "goto": " "
             }
         ],
-        "AssignCmd": [
+        "ASSIGNCMD": [
             {
                 "state": "0",
                 "goto": " "
@@ -12472,7 +12472,7 @@
                 "goto": " "
             }
         ],
-        "InCmd": [
+        "INCMD": [
             {
                 "state": "0",
                 "goto": " "
@@ -12762,7 +12762,7 @@
                 "goto": " "
             }
         ],
-        "OutCmd": [
+        "OUTCMD": [
             {
                 "state": "0",
                 "goto": " "
@@ -13052,7 +13052,7 @@
                 "goto": " "
             }
         ],
-        "ConditionCmd": [
+        "CONDITIONCMD": [
             {
                 "state": "0",
                 "goto": " "
@@ -13342,7 +13342,7 @@
                 "goto": " "
             }
         ],
-        "RepeatCmd": [
+        "REPEATCMD": [
             {
                 "state": "0",
                 "goto": " "
@@ -13632,7 +13632,7 @@
                 "goto": " "
             }
         ],
-        "SubAlgorithm": [
+        "SUBALGORITHM": [
             {
                 "state": "0",
                 "goto": " "

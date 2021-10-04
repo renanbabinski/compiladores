@@ -171,6 +171,8 @@ class Lexico:
                     return Token(TipoToken.KwPrint, lexema)
                 elif lexema == 'IF':
                     return Token(TipoToken.KwIf, lexema)
+                elif lexema == 'ELSE':
+                    return Token(TipoToken.KwElse, lexema)
                 elif lexema == 'THEN':
                     return Token(TipoToken.KwThen, lexema)
                 elif lexema == 'WHILE':

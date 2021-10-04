@@ -10,7 +10,7 @@ class Token:
 
     def __str__(self):
 
-        return "--------------------------\n<"+str(self.nome)+","+str(self.lexema)+">\n--------------------------\n"
+        return str(self.nome)+' '
     
     def get_token(self):
         return self.nome, self.lexema

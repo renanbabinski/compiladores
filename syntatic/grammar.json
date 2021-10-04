@@ -2,198 +2,198 @@
     "GRAMMAR": [
         {
             "prod_number": 0,
-            "head": "Program'",
-            "body": "Program"
+            "head": "PROGRAM'",
+            "body": "PROGRAM"
         },
         {
             "prod_number": 1,
-            "head": "Program",
-            "body": ": STATEMENTS StatementList : ALGORITHM CommandList"
+            "head": "PROGRAM",
+            "body": "Delim KwStatements STATEMENTLIST Delim KwAlgorithm COMMANDLIST"
         },
         {
             "prod_number": 2,
-            "head": "StatementList",
-            "body": "Statement StatementList"
+            "head": "STATEMENTLIST",
+            "body": "STATEMENT STATEMENTLIST"
         },
         {
             "prod_number": 3,
-            "head": "StatementList",
-            "body": "Statement"
+            "head": "STATEMENTLIST",
+            "body": "STATEMENT"
         },
         {
             "prod_number": 4,
-            "head": "Statement",
-            "body": "VARIABLE : VarType"
+            "head": "STATEMENT",
+            "body": "Var Delim VARTYPE"
         },
         {
             "prod_number": 5,
-            "head": "VarType",
-            "body": "INTEGER"
+            "head": "VARTYPE",
+            "body": "KwInteger"
         },
         {
             "prod_number": 6,
-            "head": "VarType",
-            "body": "REAL"
+            "head": "VARTYPE",
+            "body": "KwReal"
         },
         {
             "prod_number": 7,
-            "head": "ArithmeticExpression",
-            "body": "ArithmeticExpression + ArithmeticTerm"
+            "head": "ARITHMETICEXPRESSION",
+            "body": "ARITHMETICEXPRESSION OpAritSum ARITHMETICTERM"
         },
         {
             "prod_number": 8,
-            "head": "ArithmeticExpression",
-            "body": "ArithmeticExpression - ArithmeticTerm"
+            "head": "ARITHMETICEXPRESSION",
+            "body": "ARITHMETICEXPRESSION OpAritSub ARITHMETICTERM"
         },
         {
             "prod_number": 9,
-            "head": "ArithmeticExpression",
-            "body": "ArithmeticTerm"
+            "head": "ARITHMETICEXPRESSION",
+            "body": "ARITHMETICTERM"
         },
         {
             "prod_number": 10,
-            "head": "ArithmeticTerm",
-            "body": "ArithmeticTerm * ArithmeticFactor"
+            "head": "ARITHMETICTERM",
+            "body": "ARITHMETICTERM OpAritMult ARITHMETICFACTOR"
         },
         {
             "prod_number": 11,
-            "head": "ArithmeticTerm",
-            "body": "ArithmeticTerm / ArithmeticFactor"
+            "head": "ARITHMETICTERM",
+            "body": "ARITHMETICTERM OpAritDiv ARITHMETICFACTOR"
         },
         {
             "prod_number": 12,
-            "head": "ArithmeticTerm",
-            "body": "ArithmeticFactor"
+            "head": "ARITHMETICTERM",
+            "body": "ARITHMETICFACTOR"
         },
         {
             "prod_number": 13,
-            "head": "ArithmeticFactor",
-            "body": "NUMINT"
+            "head": "ARITHMETICFACTOR",
+            "body": "NumInt"
         },
         {
             "prod_number": 14,
-            "head": "ArithmeticFactor",
-            "body": "NUMREAL"
+            "head": "ARITHMETICFACTOR",
+            "body": "NumReal"
         },
         {
             "prod_number": 15,
-            "head": "ArithmeticFactor",
-            "body": "VARIABLE"
+            "head": "ARITHMETICFACTOR",
+            "body": "Var"
         },
         {
             "prod_number": 16,
-            "head": "ArithmeticFactor",
-            "body": "( ArithmeticExpression )"
+            "head": "ARITHMETICFACTOR",
+            "body": "OpenPar ARITHMETICEXPRESSION ClosePar"
         },
         {
             "prod_number": 17,
-            "head": "RelationalExpression",
-            "body": "RelationalExpression BooleanOperator RelationalTerm"
+            "head": "RELATIONALEXPRESSION",
+            "body": "RELATIONALEXPRESSION BOOLEANOPERATOR RELATIONALTERM"
         },
         {
             "prod_number": 18,
-            "head": "RelationalExpression",
-            "body": "RelationalTerm"
+            "head": "RELATIONALEXPRESSION",
+            "body": "RELATIONALTERM"
         },
         {
             "prod_number": 19,
-            "head": "RelationalTerm",
-            "body": "ArithmeticExpression OP_REL ArithmeticExpression"
+            "head": "RELATIONALTERM",
+            "body": "ARITHMETICEXPRESSION OpRel ARITHMETICEXPRESSION"
         },
         {
             "prod_number": 20,
-            "head": "RelationalTerm",
-            "body": "( RelationalExpression )"
+            "head": "RELATIONALTERM",
+            "body": "OpenPar RELATIONALEXPRESSION ClosePar"
         },
         {
             "prod_number": 21,
-            "head": "BooleanOperator",
-            "body": "AND"
+            "head": "BOOLEANOPERATOR",
+            "body": "OpBoolAnd"
         },
         {
             "prod_number": 22,
-            "head": "BooleanOperator",
-            "body": "OR"
+            "head": "BOOLEANOPERATOR",
+            "body": "OpBoolOr"
         },
         {
             "prod_number": 23,
-            "head": "CommandList",
-            "body": "Command CommandList"
+            "head": "COMMANDLIST",
+            "body": "COMMAND COMMANDLIST"
         },
         {
             "prod_number": 24,
-            "head": "CommandList",
-            "body": "Command"
+            "head": "COMMANDLIST",
+            "body": "COMMAND"
         },
         {
             "prod_number": 25,
-            "head": "Command",
-            "body": "AssignCmd"
+            "head": "COMMAND",
+            "body": "ASSIGNCMD"
         },
         {
             "prod_number": 26,
-            "head": "Command",
-            "body": "InCmd"
+            "head": "COMMAND",
+            "body": "INCMD"
         },
         {
             "prod_number": 27,
-            "head": "Command",
-            "body": "OutCmd"
+            "head": "COMMAND",
+            "body": "OUTCMD"
         },
         {
             "prod_number": 28,
-            "head": "Command",
-            "body": "ConditionCmd"
+            "head": "COMMAND",
+            "body": "CONDITIONCMD"
         },
         {
             "prod_number": 29,
-            "head": "Command",
-            "body": "RepeatCmd"
+            "head": "COMMAND",
+            "body": "REPEATCMD"
         },
         {
             "prod_number": 30,
-            "head": "Command",
-            "body": "SubAlgorithm"
+            "head": "COMMAND",
+            "body": "SUBALGORITHM"
         },
         {
             "prod_number": 31,
-            "head": "AssignCmd",
-            "body": "ASSIGN ArithmeticExpression TO VARIABLE"
+            "head": "ASSIGNCMD",
+            "body": "KwAssign ARITHMETICEXPRESSION KwTo Var"
         },
         {
             "prod_number": 32,
-            "head": "InCmd",
-            "body": "READ VARIABLE"
+            "head": "INCMD",
+            "body": "KwRead Var"
         },
         {
             "prod_number": 33,
-            "head": "OutCmd",
-            "body": "PRINT VARIABLE"
+            "head": "OUTCMD",
+            "body": "KwPrint Var"
         },
         {
             "prod_number": 34,
-            "head": "OutCmd",
-            "body": "PRINT STRING"
+            "head": "OUTCMD",
+            "body": "KwPrint String"
         },
         {
             "prod_number": 35,
-            "head": "ConditionCmd",
-            "body": "IF RelationalExpression THEN Command"
+            "head": "CONDITIONCMD",
+            "body": "KwIf RELATIONALEXPRESSION KwThen COMMAND"
         },
         {
             "prod_number": 36,
-            "head": "ConditionCmd",
-            "body": "IF RelationalExpression THEN Command ELSE Command"
+            "head": "CONDITIONCMD",
+            "body": "KwIf RELATIONALEXPRESSION KwThen COMMAND KwElse COMMAND"
         },
         {
             "prod_number": 37,
-            "head": "RepeatCmd",
-            "body": "WHILE RelationalExpression Command"
+            "head": "REPEATCMD",
+            "body": "KwWhile RELATIONALEXPRESSION COMMAND"
         },
         {
             "prod_number": 38,
-            "head": "SubAlgorithm",
-            "body": "BEGIN CommandList END"
+            "head": "SUBALGORITHM",
+            "body": "KwBegin COMMANDLIST KwEnd"
         }
     ]
 }
