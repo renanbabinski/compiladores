@@ -25,7 +25,6 @@ def main():                                                                     
     existe()
     try:
         file = open('entrada.txt','r')
-        file.seek(0,0)
         lista_nome_gramatica = []                                               #Lista para armazenar as regras das grámaticas
         lista_producao_gramatica = []                                           #lista para armazenar as produções das gramatica
         lista_producao_token = []                                               #lista para armazenar as produções dos tokens
@@ -37,9 +36,9 @@ def main():                                                                     
         lista_prod_x_gramatica = []                                             #lista para pegara a produção de uma unica regra
 
         for line in file:                                                       #for para andar no arquivo
-            #print(line.strip())
+            print(line.strip())
             if line[0] == '<':                                                  #se for gramatica vai entrar aqui Verifica se o primeiro elemento da linha é <
-                #print('É gramatica')
+                print('É gramatica')
                 count = 0                                                       #contador que será usado para pegar as letras nos araquivos
                 for letra_gramatica in line:                                    #for para andar caracter por caracter no arquivo
                     if letra_gramatica == '<':                                  #qaundo tiver esse caracter a próxima letra sera Uma letra que dá nome a gramatica
@@ -75,7 +74,7 @@ def main():                                                                     
 
                     count = count + 1
             else:                                                               #se for token entra aqui
-                #print('É token')
+                print('É token')
                 count = 0                                                       #condatador para auxiliar na elemento que seraá icluído
                 for letra_gramatica in line:                                    #for para andar ccarcter à caracter na linha
                     if letra_gramatica != '\n':                                 # para pegar simbolos não terminais das produções
