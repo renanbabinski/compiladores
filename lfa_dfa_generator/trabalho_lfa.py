@@ -20,11 +20,13 @@ if so_clear:                                                                    
 else:
     limpar = lambda l: l
 
+file_in_path = r'C:\Users\Renan\Documents\GitHub\compiladores\lfa_dfa_generator\entrada.txt'
+
 def main():                                                                     #função main
     limpar(so_clear)
-    existe()
+    existe(file_in_path)
     try:
-        file = open('entrada.txt','r')
+        file = open(file_in_path,'r')
         lista_nome_gramatica = []                                               #Lista para armazenar as regras das grámaticas
         lista_producao_gramatica = []                                           #lista para armazenar as produções das gramatica
         lista_producao_token = []                                               #lista para armazenar as produções dos tokens
@@ -37,72 +39,65 @@ def main():                                                                     
 
         for line in file:                                                       #for para andar no arquivo
             print(line.strip())
-            if line[0] == '<':                                                  #se for gramatica vai entrar aqui Verifica se o primeiro elemento da linha é <
-                print('É gramatica')
-                count = 0                                                       #contador que será usado para pegar as letras nos araquivos
-                for letra_gramatica in line:                                    #for para andar caracter por caracter no arquivo
-                    if letra_gramatica == '<':                                  #qaundo tiver esse caracter a próxima letra sera Uma letra que dá nome a gramatica
-                        tem = nao_repetir(lista_nome_gramatica,line[count+1])   #verifica se o elemento está na lista ser retornar -1 não tem na lista
-                        if tem < 0:
-                            lista_nome_gramatica.append(line[count+1])           #escreve a letra que da nome à gramatica
-                        #print(letra_gramatica)
+            # if line[0] == '<':                                                  #se for gramatica vai entrar aqui Verifica se o primeiro elemento da linha é <
+            #     print('É gramatica')
+            #     count = 0                                                       #contador que será usado para pegar as letras nos araquivos
+            #     for letra_gramatica in line:                                    #for para andar caracter por caracter no arquivo
+            #         if letra_gramatica == '<':                                  #qaundo tiver esse caracter a próxima letra sera Uma letra que dá nome a gramatica
+            #             tem = nao_repetir(lista_nome_gramatica,line[count+1])   #verifica se o elemento está na lista ser retornar -1 não tem na lista
+            #             if tem < 0:
+            #                 lista_nome_gramatica.append(line[count+1])           #escreve a letra que da nome à gramatica
+            #             #print(letra_gramatica)
 
-                    if letra_gramatica == '<' and count != 0 :                  #se for o primeiro simbolo add a lista de produções
-                        tem = nao_repetir(lista_producao_gramatica,line[count-1])#verifica se o elemento está na lista ser retornar -1 não tem na lista
-                        if tem < 0:
-                            lista_producao_gramatica.append(line[count-1])      #adiciona as produções da gramaticas
+            #         if letra_gramatica == '<' and count != 0 :                  #se for o primeiro simbolo add a lista de produções
+            #             tem = nao_repetir(lista_producao_gramatica,line[count-1])#verifica se o elemento está na lista ser retornar -1 não tem na lista
+            #             if tem < 0:
+            #                 lista_producao_gramatica.append(line[count-1])      #adiciona as produções da gramaticas
 
-                        tem = nao_repetir(lista_elementos_producao_all,line[count-1])   #verifica se o elemento está na lista ser retornar -1 não tem na lista
-                        if tem < 0:
-                            lista_elementos_producao_all.append(line[count-1])  # enchendo a lista all
-
-
-                    if letra_gramatica==' ' and (line[count+2]==' ' or line[count+2]=='\n' )and line[count+1]!='|' and line[count+1] != 'ε': # condição para pegar simbolos terminiais e add na lista de produções
-                        #print(line[count+1])
-                        tem = nao_repetir(lista_producao_gramatica,line[count+1])   #verifica se o elemento está na lista ser retornar -1 não tem na lista
-                        if tem < 0:
-                            lista_producao_gramatica.append(line[count+1])          #
-
-                        tem = nao_repetir(lista_elementos_terminais,line[count+1])   #verifica se o elemento está na lista ser retornar -1 não tem na lista
-                        if tem < 0:
-                            lista_elementos_terminais.append(line[count+1])         #
-
-                        tem = nao_repetir(lista_elementos_producao_all,line[count+1])   #verifica se o elemento está na lista ser retornar -1 não tem na lista
-                        if tem < 0:
-                            lista_elementos_producao_all.append(line[count+1])  # enchendo a lista all
+            #             tem = nao_repetir(lista_elementos_producao_all,line[count-1])   #verifica se o elemento está na lista ser retornar -1 não tem na lista
+            #             if tem < 0:
+            #                 lista_elementos_producao_all.append(line[count-1])  # enchendo a lista all
 
 
-                    count = count + 1
-            else:                                                               #se for token entra aqui
-                print('É token')
-                count = 0                                                       #condatador para auxiliar na elemento que seraá icluído
-                for letra_gramatica in line:                                    #for para andar ccarcter à caracter na linha
-                    if letra_gramatica != '\n':                                 # para pegar simbolos não terminais das produções
-                        tem = nao_repetir(lista_producao_token,line[count])     #verifica se o elemento está na lista ser retornar -1 não tem na lista
-                        if tem < 0:
-                            lista_producao_token.append(line[count])
-                        tem = nao_repetir(lista_elementos_producao_all,line[count])   #verifica se o elemento está na lista ser retornar -1 não tem na lista
-                        if tem < 0:
-                            lista_elementos_producao_all.append(line[count])    # enchendo a lista all
+            #         if letra_gramatica==' ' and (line[count+2]==' ' or line[count+2]=='\n' )and line[count+1]!='|' and line[count+1] != 'ε': # condição para pegar simbolos terminiais e add na lista de produções
+            #             #print(line[count+1])
+            #             tem = nao_repetir(lista_producao_gramatica,line[count+1])   #verifica se o elemento está na lista ser retornar -1 não tem na lista
+            #             if tem < 0:
+            #                 lista_producao_gramatica.append(line[count+1])          #
 
-                    else:                                                       #pegando os simbolos terminais dos tokens
-                        tem = nao_repetir(lista_elementos_terminais,line[count-1])   #verifica se o elemento está na lista ser retornar -1 não tem na lista
-                        if tem < 0:
-                            lista_elementos_terminais.append(line[count-1])         #pegando os simbolos que não são terminais
+            #             tem = nao_repetir(lista_elementos_terminais,line[count+1])   #verifica se o elemento está na lista ser retornar -1 não tem na lista
+            #             if tem < 0:
+            #                 lista_elementos_terminais.append(line[count+1])         #
 
-                        tem = nao_repetir(lista_elementos_producao_all,line[count-1])   #verifica se o elemento está na lista ser retornar -1 não tem na lista
-                        if tem < 0:
-                            lista_elementos_producao_all.append(line[count-1])  # enchendo a lista all
-                    count = count + 1
-                                                                                #carregar as produções no af
+            #             tem = nao_repetir(lista_elementos_producao_all,line[count+1])   #verifica se o elemento está na lista ser retornar -1 não tem na lista
+            #             if tem < 0:
+            #                 lista_elementos_producao_all.append(line[count+1])  # enchendo a lista all
+
+
+            #         count = count + 1
+            # else:                                                               #se for token entra aqui
+            #print('É token')
+            for letra_gramatica in line.strip():                                    #for para andar caracter à caracter na linha
+                if letra_gramatica not in lista_producao_token:         #Se não há na lista
+                    lista_producao_token.append(letra_gramatica)
+
+                if letra_gramatica not in lista_elementos_producao_all:   #Se não há na lista
+                    lista_elementos_producao_all.append(letra_gramatica)   
+
+            if line.strip()[-1] not in lista_elementos_terminais:
+                lista_elementos_terminais.append(line.strip()[-1])         #pegando os simbolos que não são terminais
+
+                                                                            #carregar as produções no af
         matriz = criar_matriz(lista_elementos_terminais,lista_nome_gramatica,
                                 lista_producao_gramatica,lista_producao_token,
                                 lista_elementos_producao_all, alpha_lower,
-                                alpha_upper, file)
+                                alpha_upper)
+
+        exibir_matriz(matriz)
+        exit()
 
         file.seek(0,0)
         lista_gramaticas_end = n_gramatica_terminal(file)                       #função para verificar a gramatica é terminal ou não
-
 
         file.seek(0,0)
         first_gramatica = 0
@@ -166,7 +161,7 @@ def main():                                                                     
         matriz_AFD = criar_matriz(lista_elementos_terminais,lista_nome_gramatica,
                                         lista_producao_gramatica,lista_producao_token,
                                         lista_elementos_producao_all, alpha_lower,
-                                        alpha_upper, file)
+                                        alpha_upper)
 
         #wait = input("PRESS ENTER TO CONTINUE...")
         #time.sleep(3)                                                         # pause 3 seconds
@@ -295,8 +290,8 @@ def main():                                                                     
 
 
 
-def existe():                                                                   #Verifica se o arquivo entrada.txt existe
-    if os.path.isfile('entrada.txt'):
+def existe(path):                                                                   #Verifica se o arquivo entrada.txt existe
+    if os.path.isfile(path):
         print('Arquivo de entrada OK!!! \n')
     else:
         print('Não existe arquivo de entrada')                                  #
@@ -320,8 +315,7 @@ def afnd_token():                                                               
 def criar_matriz(lista_elementos_terminais,lista_nome_gramatica,
                 lista_producao_gramatica,lista_producao_token,
                 lista_elementos_producao_all, alpha_lower,
-                alpha_upper,file):                                                   #função para criar matriz
-    file.seek(0,0)
+                alpha_upper):                                                   #função para criar matriz
     m = 27                                                                      #quantidade de listas dentro de uma lista
     n = 29                                                                      #coluna quantidade de itens dentro de uma lista
     n_gramatica = 0
