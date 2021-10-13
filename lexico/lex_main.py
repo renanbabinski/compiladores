@@ -26,7 +26,7 @@ while True:
         nome = 'OpRel'
     new_token = {'nome': nome, 'lexema': lexema}
     tokens['TOKENS'].append(new_token)
-    time.sleep(0.1)
+    #time.sleep(0.1)
 
 with open(r'C:\Users\Renan\Documents\GitHub\compiladores\lexico\tokens.json', 'w', encoding='utf-8') as wfile:
     json.dump(tokens, wfile, ensure_ascii=False, indent=4)
