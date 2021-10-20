@@ -5,7 +5,7 @@ import time
 import os
 
 # Programa de entrada 
-lex = Lexico(r'C:\Users\Renan\Documents\GitHub\compiladores\input_programs\programa_com_erro.txt')
+lex = Lexico(r'C:\Users\Renan\Documents\GitHub\compiladores\input_programs\programa.txt')
 t = True
 tokens = {'TOKENS':[]}
 op_rel = ['OpRelSmaller',
@@ -20,7 +20,7 @@ while True:
     t = lex.next_token()
     if t.lexema == 'Fim':
         break
-    nome, lexema = t.get_token()
+    nome, lexema, line = t.get_token()
     if str(nome) in op_rel:
         # cria um token único para operador relacional = OpRel
         nome = 'OpRel'
@@ -28,7 +28,7 @@ while True:
     else:
         print(t, end='')
     
-    new_token = {'nome': nome, 'lexema': lexema}
+    new_token = {'nome': nome, 'lexema': lexema, 'linha': line}
     tokens['TOKENS'].append(new_token)
 
 # Arquivo de saída estruturado com os tokens

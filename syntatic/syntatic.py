@@ -86,6 +86,7 @@ while True:
 
     else:
         print("ERRO SINTÁTICO")
+        print("Na linha {}".format())
         print("Expected {}".format(pilha[-2]))
         break
 

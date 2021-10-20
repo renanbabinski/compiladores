@@ -7,24 +7,25 @@ class Lexico:
     def __init__(self, arquivo, DEBUG=False):
         self.ldat = ReadTextFile(arquivo)
         self.debug = DEBUG
+        self.line = 1
 
     def arithmetic_operator(self):
         c = self.ldat.readNextCharacter()
         if c == '*':
-                return Token(TipoToken.OpAritMult, self.ldat.get_lexema())
+                return Token(TipoToken.OpAritMult, self.ldat.get_lexema(), self.line)
         elif c == '/':
-            return Token(TipoToken.OpAritDiv, self.ldat.get_lexema())
+            return Token(TipoToken.OpAritDiv, self.ldat.get_lexema(), self.line)
         elif c == '+':
-            return Token(TipoToken.OpAritSum, self.ldat.get_lexema())
+            return Token(TipoToken.OpAritSum, self.ldat.get_lexema(), self.line)
         elif c == '-':
-            return Token(TipoToken.OpAritSub, self.ldat.get_lexema())
+            return Token(TipoToken.OpAritSub, self.ldat.get_lexema(), self.line)
         else:
             return None
 
     def delimiter(self):
         c = self.ldat.readNextCharacter()
         if c == ':':
-                return Token(TipoToken.Delim, self.ldat.get_lexema())
+                return Token(TipoToken.Delim, self.ldat.get_lexema(), self.line)
         else:
             return None
 
@@ -33,30 +34,30 @@ class Lexico:
         if c == '<':
             c = self.ldat.readNextCharacter()
             if c == '>':
-                return Token(TipoToken.OpRelDiff, self.ldat.get_lexema())
+                return Token(TipoToken.OpRelDiff, self.ldat.get_lexema(), self.line)
             elif c == '=':
-                return Token(TipoToken.OpRelSmallerEqual, self.ldat.get_lexema())
+                return Token(TipoToken.OpRelSmallerEqual, self.ldat.get_lexema(), self.line)
             else:
                 self.ldat.go_back_buffer()
-                return Token(TipoToken.OpRelSmaller, self.ldat.get_lexema())
+                return Token(TipoToken.OpRelSmaller, self.ldat.get_lexema(), self.line)
         elif c == '=':
-            return Token(TipoToken.OpRelEqual, self.ldat.get_lexema())
+            return Token(TipoToken.OpRelEqual, self.ldat.get_lexema(), self.line)
         elif c == '>':
             c = self.ldat.readNextCharacter()
             if c == '=':
-                return Token(TipoToken.OpRelBiggerEqual, self.ldat.get_lexema())
+                return Token(TipoToken.OpRelBiggerEqual, self.ldat.get_lexema(), self.line)
             else:
                 self.ldat.go_back_buffer()
-                return Token(TipoToken.OpRelBigger, self.ldat.get_lexema())
+                return Token(TipoToken.OpRelBigger, self.ldat.get_lexema(), self.line)
         else:
             return None
 
     def parentheses(self):
         c = self.ldat.readNextCharacter()
         if c == '(':
-            return Token(TipoToken.OpenPar, self.ldat.get_lexema())
+            return Token(TipoToken.OpenPar, self.ldat.get_lexema(), self.line)
         elif c == ')':
-            return Token(TipoToken.ClosePar, self.ldat.get_lexema())
+            return Token(TipoToken.ClosePar, self.ldat.get_lexema(), self.line)
         else:
             return None
 
@@ -78,11 +79,11 @@ class Lexico:
                         return None
                 elif not c.isdigit():
                     self.ldat.go_back_buffer()
-                    return Token(TipoToken.NumInt, self.ldat.get_lexema())
+                    return Token(TipoToken.NumInt, self.ldat.get_lexema(), self.line)
             elif state == 3:
                 if not c.isdigit():
                     self.ldat.go_back_buffer()
-                    return Token(TipoToken.NumReal, self.ldat.get_lexema())
+                    return Token(TipoToken.NumReal, self.ldat.get_lexema(), self.line)
 
     def variable(self):
         state = 1
@@ -96,7 +97,7 @@ class Lexico:
             elif state == 2:
                 if not c.isalnum():
                     self.ldat.go_back_buffer()
-                    return Token(TipoToken.Var, self.ldat.get_lexema())
+                    return Token(TipoToken.Var, self.ldat.get_lexema(), self.line)
 
     def string(self):
         state = 1
@@ -111,7 +112,7 @@ class Lexico:
                 if c == '\n':
                     return None
                 if c == '\'':
-                    return Token(TipoToken.String, self.ldat.get_lexema())
+                    return Token(TipoToken.String, self.ldat.get_lexema(), self.line)
                 elif c == '\\':
                     state = 3
             elif state == 3:
@@ -125,7 +126,9 @@ class Lexico:
         while True:
             c = self.ldat.readNextCharacter()
             if c == -1:
-                return Token(TipoToken.End, 'Fim')
+                return Token(TipoToken.End, 'Fim', self.line)
+            if c == '\n':
+                self.line += 1
             if state == 1:
                 if c.isspace() or c == ' ':
                     state = 2
@@ -154,44 +157,44 @@ class Lexico:
                 lexema = ""
                 lexema = self.ldat.get_lexema()
                 if lexema == 'STATEMENTS':
-                    return Token(TipoToken.KwStatements, lexema)
+                    return Token(TipoToken.KwStatements, lexema, self.line)
                 elif lexema == 'ALGORITHM':
-                    return Token(TipoToken.KwAlgorithm, lexema)
+                    return Token(TipoToken.KwAlgorithm, lexema, self.line)
                 elif lexema == 'INT':
-                    return Token(TipoToken.KwInteger, lexema)
+                    return Token(TipoToken.KwInteger, lexema, self.line)
                 elif lexema == 'REAL':
-                    return Token(TipoToken.KwReal, lexema)
+                    return Token(TipoToken.KwReal, lexema, self.line)
                 elif lexema == 'ASSIGN':
-                    return Token(TipoToken.KwAssign, lexema)
+                    return Token(TipoToken.KwAssign, lexema, self.line)
                 elif lexema == 'TO':
-                    return Token(TipoToken.KwTo, lexema)
+                    return Token(TipoToken.KwTo, lexema, self.line)
                 elif lexema == 'READ':
-                    return Token(TipoToken.KwRead, lexema)
+                    return Token(TipoToken.KwRead, lexema, self.line)
                 elif lexema == 'PRINT':
-                    return Token(TipoToken.KwPrint, lexema)
+                    return Token(TipoToken.KwPrint, lexema, self.line)
                 elif lexema == 'IF':
-                    return Token(TipoToken.KwIf, lexema)
+                    return Token(TipoToken.KwIf, lexema, self.line)
                 elif lexema == 'ELSE':
-                    return Token(TipoToken.KwElse, lexema)
+                    return Token(TipoToken.KwElse, lexema, self.line)
                 elif lexema == 'THEN':
-                    return Token(TipoToken.KwThen, lexema)
+                    return Token(TipoToken.KwThen, lexema, self.line)
                 elif lexema == 'WHILE':
-                    return Token(TipoToken.KwWhile, lexema)
+                    return Token(TipoToken.KwWhile, lexema, self.line)
                 elif lexema == 'BEGIN':
-                    return Token(TipoToken.KwBegin, lexema)
+                    return Token(TipoToken.KwBegin, lexema, self.line)
                 elif lexema == 'END':
-                    return Token(TipoToken.KwEnd, lexema)
+                    return Token(TipoToken.KwEnd, lexema, self.line)
                 elif lexema == 'AND':
-                    return Token(TipoToken.OpBoolAnd, lexema)
+                    return Token(TipoToken.OpBoolAnd, lexema, self.line)
                 elif lexema == 'OR':
-                    return Token(TipoToken.OpBoolOr, lexema)
+                    return Token(TipoToken.OpBoolOr, lexema, self.line)
                 else:
                     return None
 
     def end(self):
         c = self.ldat.readNextCharacter()
         if c == -1:
-            return Token(TipoToken.End, 'Fim')
+            return Token(TipoToken.End, 'Fim', self.line)
         return None
                 
     def next_token(self):
@@ -206,7 +209,7 @@ class Lexico:
         next = self.spaces_and_comments()
         if next != None:
             if next.nome == TipoToken.End:
-                return Token(TipoToken.End, 'Fim')
+                return Token(TipoToken.End, 'Fim', self.line)
         self.ldat.confirm()
 
         try_number += 1
