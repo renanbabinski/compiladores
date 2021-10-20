@@ -1,9 +1,7 @@
 import json
 from os import stat
 
-
 # Arquivos de entrada
-
 with open(r'C:\Users\Renan\Documents\GitHub\compiladores\syntatic\input_json\grammar.json', 'r', encoding='utf-8') as file:
     grammar = json.load(file)
 
@@ -84,17 +82,16 @@ while True:
         reduce = True        
         
     elif new_state == 'acc':
-        print("######\nPROGRAMA CORRETO\n#########")
+        print("################\nPROGRAMA CORRETO\n################")
         break
         
     else:
-        print("ERRO SINTÁTICO")
+        print("###############\nERRO SINTÁTICO\n###############")
         print("Esperado:")
         for tk in slr['ACTIONS']:
             if slr['ACTIONS'][tk][int(last_state)]['action'] != ' ':
                 print("-> {}".format(tk))
         print("Na linha {}".format(tokens['TOKENS'][len(tokens_lidos)]['linha']))
-        print("Expected {}".format(pilha[-2]))
         break
 
 

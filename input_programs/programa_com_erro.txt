@@ -2,7 +2,7 @@
 argumento:INT
 fatorial:INT
 
-:ALGORITHM:
+:ALGORITHM
 % Calcula o fatorial de um número inteiro
 READ argumento
 ASSIGN argumento TO fatorial
