@@ -1,7 +1,7 @@
 :STATEMENTS
 argumento:INT
 fatorial:INT
-fatorial
+INT
 
 :ALGORITHM
 % Calcula o fatorial de um número inteiro

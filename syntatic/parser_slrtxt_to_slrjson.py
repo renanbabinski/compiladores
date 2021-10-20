@@ -4,12 +4,12 @@
 
 
 import json
-
+import os
 
 lr_table = dict()
 
 #Arquivo TXT de entrada
-with open(r'C:\Users\Renan\Documents\GitHub\compiladores\syntatic\slr_table.txt', 'r', encoding='utf-8') as file:
+with open(r'C:\Users\Renan\Documents\GitHub\compiladores\syntatic\input_txt\slr_table.txt', 'r', encoding='utf-8') as file:
     lines = file.readlines()
 
     for line, num_line in zip(lines, range(len(lines))):
@@ -42,6 +42,8 @@ with open(r'C:\Users\Renan\Documents\GitHub\compiladores\syntatic\slr_table.txt'
            
 
 #Arquivo JSON de saída
-with open(r'C:\Users\Renan\Documents\GitHub\compiladores\syntatic\slr_table.json', 'w', encoding='utf-8') as wfile:
+file = r"C:\Users\Renan\Documents\GitHub\compiladores\syntatic\input_json\slr_table.json"
+os.makedirs(os.path.dirname(file), exist_ok=True)
+with open(file, 'w', encoding='utf-8') as wfile:
     json.dump(lr_table, wfile, ensure_ascii=False, indent=4)
 

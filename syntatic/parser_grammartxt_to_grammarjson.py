@@ -3,6 +3,7 @@
 
 
 import json
+import os
 
 
 grammar = {'GRAMMAR':[]}
@@ -26,5 +27,7 @@ with open(r'C:\Users\Renan\Documents\GitHub\compiladores\grammar\grammar.txt', '
            
 
 #Arquivo JSON de saída
-with open(r'C:\Users\Renan\Documents\GitHub\compiladores\syntatic\grammar.json', 'w', encoding='utf-8') as wfile:
+file = r"C:\Users\Renan\Documents\GitHub\compiladores\syntatic\input_json\grammar.json"
+os.makedirs(os.path.dirname(file), exist_ok=True)
+with open(file, 'w', encoding='utf-8') as wfile:
     json.dump(grammar, wfile, ensure_ascii=False, indent=4)

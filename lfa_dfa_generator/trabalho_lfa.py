@@ -312,6 +312,10 @@ def afnd_token():                                                               
     exibir_matriz(matriz_afnd)
     return 0"""
 
+def init_matrix():
+    pass
+
+
 def criar_matriz(lista_elementos_terminais,lista_nome_gramatica,
                 lista_producao_gramatica,lista_producao_token,
                 lista_elementos_producao_all, alpha_lower,

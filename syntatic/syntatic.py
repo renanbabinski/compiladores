@@ -2,21 +2,16 @@ import json
 from os import stat
 
 
+# Arquivos de entrada
 
-with open(r'C:\Users\Renan\Documents\GitHub\compiladores\syntatic\grammar.json', 'r', encoding='utf-8') as file:
+with open(r'C:\Users\Renan\Documents\GitHub\compiladores\syntatic\input_json\grammar.json', 'r', encoding='utf-8') as file:
     grammar = json.load(file)
 
-#print(grammar['GRAMMAR'][0])
-
-with open(r'C:\Users\Renan\Documents\GitHub\compiladores\syntatic\slr_table.json', 'r', encoding='utf-8') as file:
+with open(r'C:\Users\Renan\Documents\GitHub\compiladores\syntatic\input_json\slr_table.json', 'r', encoding='utf-8') as file:
     slr = json.load(file)
 
-#print(slr['ACTIONS'][':'][0])
-
-with open(r'C:\Users\Renan\Documents\GitHub\compiladores\lexico\tokens.json', 'r', encoding='utf-8') as file:
+with open(r'C:\Users\Renan\Documents\GitHub\compiladores\lexico\tokens_output\tokens.json', 'r', encoding='utf-8') as file:
     tokens = json.load(file)
-
-#print(tokens['TOKENS'][0]['nome'])
 
 #####################FUNCTIONS#############################
 
@@ -26,8 +21,6 @@ def print_steps(step, pilha, fluxo_tokens):
     print('STEP -> {}\nPILHA -> {}\nENTRADA -> {}'.format(step, pilha, fluxo_tokens))
     print('-------------------')
     return step
-
-
 
 
 ###########################################################
@@ -44,7 +37,9 @@ pilha = ['0']
 reduce = False
 #print(pilha)
 
+# Enquanto a transição não for 'acc' e nem ' ' esse loop executará
 while True:
+    # Quando houver uma redução não preciso mostrar os steps novamente
     if not reduce:
         step = print_steps(step, pilha, fluxo_tokens)
 
@@ -59,8 +54,6 @@ while True:
         fluxo_tokens.pop(0)
 
         reduce = False
-
-
 
     elif new_state[0] == 'r':
         print('REDUCE')
@@ -93,6 +86,7 @@ while True:
 
     else:
         print("ERRO SINTÁTICO")
+        print("Expected {}".format(pilha[-2]))
         break
 
 
