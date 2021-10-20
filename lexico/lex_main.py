@@ -5,7 +5,7 @@ import time
 import os
 
 # Programa de entrada 
-lex = Lexico(r'C:\Users\Renan\Documents\GitHub\compiladores\input_programs\programa.txt')
+lex = Lexico(r'C:\Users\Renan\Documents\GitHub\compiladores\input_programs\programa_com_erro.txt')
 t = True
 tokens = {'TOKENS':[]}
 op_rel = ['OpRelSmaller',
@@ -14,7 +14,6 @@ op_rel = ['OpRelSmaller',
           'OpRelBiggerEqual',
           'OpRelEqual',
           'OpRelDiff']
-
 
 while True:
     t = lex.next_token()

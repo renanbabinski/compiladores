@@ -27,6 +27,9 @@ def print_steps(step, pilha, fluxo_tokens):
 step = 0
 
 fluxo_tokens = []
+tokens_lidos = []
+last_state = 0
+
 for token in tokens['TOKENS']:
     fluxo_tokens.append(token['nome'])
 
@@ -51,7 +54,7 @@ while True:
 
         pilha.append(token)
         pilha.append(new_state[1:])
-        fluxo_tokens.pop(0)
+        tokens_lidos.append(fluxo_tokens.pop(0))
 
         reduce = False
 
@@ -77,16 +80,20 @@ while True:
         pilha.append(new_state)
         step = print_steps(step, pilha, fluxo_tokens)
 
+        last_state = new_state
         reduce = True        
         
     elif new_state == 'acc':
         print("######\nPROGRAMA CORRETO\n#########")
         break
         
-
     else:
         print("ERRO SINTÁTICO")
-        print("Na linha {}".format())
+        print("Esperado:")
+        for tk in slr['ACTIONS']:
+            if slr['ACTIONS'][tk][int(last_state)]['action'] != ' ':
+                print("-> {}".format(tk))
+        print("Na linha {}".format(tokens['TOKENS'][len(tokens_lidos)]['linha']))
         print("Expected {}".format(pilha[-2]))
         break
 
