@@ -20,7 +20,7 @@ if so_clear:                                                                    
 else:
     limpar = lambda l: l
 
-file_in_path = r'C:\Users\Renan\Documents\GitHub\compiladores\lfa_dfa_generator\entrada.txt'
+file_in_path = r'entrada.txt'
 
 def main():                                                                     #função main
     limpar(so_clear)
@@ -94,7 +94,6 @@ def main():                                                                     
                                 alpha_upper)
 
         exibir_matriz(matriz)
-        exit()
 
         file.seek(0,0)
         lista_gramaticas_end = n_gramatica_terminal(file)                       #função para verificar a gramatica é terminal ou não
@@ -390,7 +389,7 @@ def exibir_matriz(matriz):                                                      
     """Exibe uma matriz na saída padrão"""
     for linha in matriz:
         for c in linha:
-            space = 5 - len(c)
+            space = 3 - len(c)
             for i in range(space):
                 print(' ',end='')
             print(" {} |".format(c), end='')
